@@ -1,26 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const retroFont = localFont({
-  src: [
-    {
-      path: "../../public/fonts/retro.ttf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
+const retro = localFont({
+  src: "../../public/fonts/retro.ttf",
   variable: "--font-retro",
 });
 
@@ -36,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${retroFont.variable} antialiased`}>{children}</body>
+      <body className={`${poppins.variable} ${retro.variable}`}>
+        {children}
+      </body>
     </html>
   );
 }
