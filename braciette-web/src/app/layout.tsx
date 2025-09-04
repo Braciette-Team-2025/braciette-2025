@@ -14,7 +14,7 @@ const retro = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Braciette 2025",
+  title: "Braciate 2025",
   description: "Brawijaya Appreciate Website",
 };
 
