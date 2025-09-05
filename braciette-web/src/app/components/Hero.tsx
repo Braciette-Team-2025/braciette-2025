@@ -44,7 +44,7 @@ function Hero() {
           />
         </div>
       </div>
-      <div className="absolute w-max h-max top-85 right-0">
+      <div className="absolute w-max h-max top-85t right-0">
         <div className="w-[5dvw] h-[20dvh] relative rotate-180">
           <Image
             src="/landing-page/flower.svg"
