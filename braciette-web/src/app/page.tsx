@@ -3,6 +3,7 @@ import Hero from "../feature/(home)/hero/components/Hero";
 import Navbar from "../feature/(home)/hero/components/Navbar";
 import Image from "next/image";
 import { Footer } from "@/shared/footer/Footer";
+import Hotpicks from "@/feature/(home)/hotpicks/components/Hotpicks";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         />
         <Hero />
         <Guide />
+        <Hotpicks />
       </main>
       <Footer />
     </>
