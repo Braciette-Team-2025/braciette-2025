@@ -66,7 +66,7 @@ function Guide() {
           />
         </div>
       </div>
-      <div className="flex flex-row justify-between items-center py-10 px-26">
+      <div className="flex flex-row justify-center items-center py-10 flex-wrap gap-6">
         {guidelines.map((guideline, index) => (
           <GuideCard key={index} guideline={guideline} />
         ))}

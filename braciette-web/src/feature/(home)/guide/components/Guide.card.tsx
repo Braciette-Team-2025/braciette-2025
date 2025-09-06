@@ -6,7 +6,7 @@ interface GuideCardProps {
 
 function GuideCard({ guideline }: GuideCardProps) {
   return (
-    <div className="w-[27dvw]">
+    <div className="w-[40dvw] xl:w-[27dvw]">
       <div className="flex flex-row justify-end items-center gap-6 bg-purple p-3 border-black border-2">
         <div className="relative w-[1dvw] h-[2dvh]">
           <Image
@@ -33,7 +33,7 @@ function GuideCard({ guideline }: GuideCardProps) {
           />
         </div>
       </div>
-      <p className="px-14 py-14 text-center bg-yellow text-pink border-black border-2 font-poppins font-bold text-[24px]">
+      <p className="p-8 lg:p-14 text-center bg-yellow text-pink border-black border-2 font-poppins font-bold text-[14px] lg:text-[24px]">
         {guideline}
       </p>
     </div>
