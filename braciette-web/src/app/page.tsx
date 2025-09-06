@@ -2,6 +2,7 @@ import Guide from "@/feature/(home)/guide/components/Guide";
 import Hero from "../feature/(home)/hero/components/Hero";
 import Navbar from "../feature/(home)/hero/components/Navbar";
 import Image from "next/image";
+import { Footer } from "@/shared/footer/Footer";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <Guide />
       </main>
+      <Footer />
     </>
   );
 }
