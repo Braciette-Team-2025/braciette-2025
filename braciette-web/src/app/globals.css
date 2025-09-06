@@ -3,13 +3,24 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --pink: #fd039d;
+  --yellow: #f3d038;
+  --green: #adfc03;
+  --purple: #56396f;
+  --dark-blue: #00003d;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-pink: var(--pink);
+  --color-yellow: var(--yellow);
+  --color-green: var(--green);
+  --color-purple: var(--purple);
+  --color-dark-blue: var(--dark-blue);
+  --font-retro: var(--font-retro);
+  --font-yourmate: var(--font-yourmate);
+  --font-poppins: var(--font-poppins);
 }
 
 @media (prefers-color-scheme: dark) {
