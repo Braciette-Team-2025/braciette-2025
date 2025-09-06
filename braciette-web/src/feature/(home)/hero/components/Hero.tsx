@@ -40,8 +40,8 @@ function Hero() {
           </div>
         </div>
       </div>
-      <div className="absolute w-max h-max top-30 md:top-35 lg:top-40 left-0">
-        <div className="w-[9dvw] md:w-[6dvw] lg:w-[9dvw] h-[16dvh] md:h-[21dvh] lg:h-[40dvh] relative">
+      <div className="absolute w-max h-max top-20 md:top-35 lg:top-40 left-0">
+        <div className="w-[7dvw] md:w-[6dvw] lg:w-[9dvw] h-[16dvh] md:h-[21dvh] lg:h-[40dvh] relative">
           <Image
             src="/landing-page/flower.svg"
             alt="flower"
@@ -50,8 +50,8 @@ function Hero() {
           />
         </div>
       </div>
-      <div className="absolute w-max h-max top-100 md:top-85 right-0">
-        <div className="w-[9dvw] md:w-[6dvw] lg:w-[4dvw] h-[16dvh] md:h-[14dvh] lg:h-[16dvh] relative rotate-180">
+      <div className="absolute w-max h-max top-85 right-0">
+        <div className="w-[7dvw] md:w-[6dvw] lg:w-[4dvw] h-[16dvh] md:h-[14dvh] lg:h-[16dvh] relative rotate-180">
           <Image
             src="/landing-page/flower.svg"
             alt="flower"
