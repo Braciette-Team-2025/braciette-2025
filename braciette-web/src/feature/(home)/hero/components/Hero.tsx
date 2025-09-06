@@ -3,7 +3,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-yellow w-full h-[60dvh] pt-10 lg:pt-0 lg:h-screen z-40"
+      className="relative bg-yellow w-full pt-10 lg:pt-0 h-screen z-40"
     >
       <Image
         src="/landing-page/lines.svg"
@@ -21,8 +21,8 @@ function Hero() {
               objectFit="contain"
             />
           </div>
-          <div className="w-full flex flex-col-reverse md:flex-row justify-between items-center">
-            <div className="w-[12dvw] h-[10dvh] xl:h-[15dvh] relative translate-y-2 lg:translate-y-0 xl:translate-y-2 lg:-translate-x-5 xl:-translate-x-12">
+          <div className="w-full flex flex-col-reverse md:flex-row justify-between items-center mt-4 md:mt-0">
+            <div className="w-[12dvw] h-[10dvh] xl:h-[15dvh] relative md:translate-y-2 md:translate-x-10 lg:translate-y-4 xl:translate-y-2 lg:-translate-x-3 xl:-translate-x-12">
               <Image
                 src="/landing-page/logo.svg"
                 alt="Braciate Logo"
@@ -41,7 +41,7 @@ function Hero() {
         </div>
       </div>
       <div className="absolute w-max h-max top-20 md:top-35 lg:top-40 left-0">
-        <div className="w-[7dvw] md:w-[6dvw] lg:w-[9dvw] h-[16dvh] md:h-[21dvh] lg:h-[40dvh] relative">
+        <div className="w-[15dvw] md:w-[6dvw] lg:w-[9dvw] h-[35dvh] md:h-[21dvh] lg:h-[40dvh] relative">
           <Image
             src="/landing-page/flower.svg"
             alt="flower"
@@ -50,8 +50,8 @@ function Hero() {
           />
         </div>
       </div>
-      <div className="absolute w-max h-max top-85 right-0">
-        <div className="w-[7dvw] md:w-[6dvw] lg:w-[4dvw] h-[16dvh] md:h-[14dvh] lg:h-[16dvh] relative rotate-180">
+      <div className="absolute w-max h-max top-120 md:top-150 lg:top-85 right-0">
+        <div className="w-[15dvw] md:w-[6dvw] lg:w-[4dvw] h-[35dvh] md:h-[14dvh] lg:h-[16dvh] relative rotate-180">
           <Image
             src="/landing-page/flower.svg"
             alt="flower"
