@@ -7,7 +7,7 @@ function Hero() {
     >
       <Image
         src="/landing-page/lines.svg"
-        alt="Hero Image"
+        alt="Lines Background"
         fill={true}
         objectFit="cover"
       />
@@ -16,7 +16,7 @@ function Hero() {
           <div className="w-[86dvw] h-[25dvh] md:h-[30dvh] lg:h-[50dvh] xl:h-[65dvh] lg:-translate-x-[2dvw] translate-y-[2dvh] lg:translate-y-[10dvh] relative">
             <Image
               src="/landing-page/hero.svg"
-              alt="A"
+              alt="APPRECIATE"
               fill={true}
               objectFit="contain"
             />
