@@ -12,7 +12,7 @@ function Navbar() {
   ];
 
   return (
-    <nav className="fixed z-50 top-0 left-0 right-0">
+    <nav className="fixed top-0 left-0 right-0 z-99">
       <div
         className="flex flex-row justify-between items-center bg-pink p-4 md:p-6"
         style={{
