@@ -13,6 +13,11 @@ const retro = localFont({
   variable: "--font-retro",
 });
 
+const yourmate = localFont({
+  src: "../../public/fonts/yourmate.ttf",
+  variable: "--font-yourmate",
+});
+
 export const metadata: Metadata = {
   title: "Braciate 2025",
   description: "Brawijaya Appreciate Website",
@@ -25,7 +30,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.variable} ${retro.variable}`}>
+      <body
+        className={`${poppins.variable} ${retro.variable} ${yourmate.variable}`}
+      >
         {children}
       </body>
     </html>
