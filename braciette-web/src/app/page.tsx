@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="relative bg-dark-blue min-h-screen">
+      <main className="relative bg-dark-blue max-w-screen min-h-screen">
         <Image
           src="/landing-page/lines-white.svg"
           alt="Lines Background"
@@ -18,7 +18,7 @@ export default function Home() {
         />
         <Hero />
         <Guide />
-        <Hotpicks />
+        {/* <Hotpicks /> ON HOLD */}
       </main>
       <Footer />
     </>
