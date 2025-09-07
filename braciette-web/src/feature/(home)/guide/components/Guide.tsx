@@ -1,6 +1,8 @@
 import Image from "next/image";
 import GuideCard from "./Guide.card";
 
+// PAGE ON HOLD, WAITING FOR FINAL DESIGN
+
 function Guide() {
   const guidelines = [
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",

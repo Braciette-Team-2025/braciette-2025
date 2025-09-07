@@ -18,7 +18,7 @@ export default function Home() {
         />
         <Hero />
         <Guide />
-        <Hotpicks />
+        {/* <Hotpicks /> ON HOLD */}
       </main>
       <Footer />
     </>
