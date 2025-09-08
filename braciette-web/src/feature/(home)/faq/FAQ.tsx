@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 // Mock FAQ data - easy to replace with real data later
-const FAQ_DATA = [
+const FAQ_DATA: Array<{ id: string; question: string; answer: string }> = [
   {
     id: "item-1",
     question: "How do I cast my vote on this platform?",
@@ -158,7 +158,7 @@ function FAQ() {
 
                   {/* Answer - Expandable with dark navy background */}
                   <AccordionContent className="w-full h-full border-2 border-t-0 pb-0 border-white rounded-b-2xl">
-                    <div className="bg-white/1 backdrop-blur-xs rounded-b-2xl px-6 py-4 text-white/90 border border-white/20">
+                    <div className="bg-white/10 backdrop-blur-xs rounded-b-2xl px-6 py-4 text-white/90 border border-white/20">
                       <p className="font-poppins font-bold">{faq.answer}</p>
                     </div>
                   </AccordionContent>
