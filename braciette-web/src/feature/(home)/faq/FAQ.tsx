@@ -59,12 +59,12 @@ function FAQ() {
       <div className="w-full h-full flex flex-col justify-center items-center">
         {/* Title with existing stars */}
         <h1
-          className="relative font-yourmate text-green mb-16"
-          style={{ fontSize: "clamp(48px, 6vw, 72px)" }}
+          className="relative font-yourmate text-green text-center mb-16"
+          style={{ fontSize: "clamp(30px, 5vw, 72px)" }}
         >
           Frequently Asked Question
           {/* Star 1 */}
-          <div className="absolute -top-9 -left-18">
+          <div className="hidden md:block absolute -top-12 -left-6 lg:-top-10 lg:-left-10 xl:-top-9 xl:-left-18">
             <div className="relative w-[3dvw] h-[9dvh]">
               <Image
                 src="/landing-page/star-pink.svg"
@@ -75,7 +75,7 @@ function FAQ() {
             </div>
           </div>
           {/* Star 2 */}
-          <div className="absolute top-8 -left-24">
+          <div className="hidden md:block absolute top-2 -left-10 lg:top-6 lg:-left-16 xl:top-8 xl:-left-24">
             <div className="relative w-[3dvw] h-[5dvh]">
               <Image
                 src="/landing-page/star-pink.svg"
@@ -86,7 +86,7 @@ function FAQ() {
             </div>
           </div>
           {/* Star 3 */}
-          <div className="absolute top-9 -right-18">
+          <div className="hidden md:block absolute top-1 -right-8 lg:top-3 lg:-right-10 xl:top-9 xl:-right-18">
             <div className="relative w-[3dvw] h-[9dvh]">
               <Image
                 src="/landing-page/star-pink.svg"
@@ -101,7 +101,7 @@ function FAQ() {
         {/* Main FAQ Content - Two Column Layout */}
         <div className="w-full max-w-7xl flex xl:flex-row flex-col justify-center gap-16 px-8 z-50">
           {/* Left Column - Mascot */}
-          <div className="flex-shrink-0 w-1/3 flex justify-center items-center self-center xl:self-start">
+          <div className="hidden xl:flex flex-shrink-0 w-1/3 justify-center items-center self-center xl:self-start">
             <div className="relative w-[400px] h-[400px]">
               <Image
                 src="/landing-page/faq-mascot.svg"
