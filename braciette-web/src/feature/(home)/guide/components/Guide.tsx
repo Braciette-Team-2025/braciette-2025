@@ -59,10 +59,10 @@ function Guide() {
             GUIDE VOTING
           </h1>
           <h2
-            className="font-retro -translate-y-2 text-pink"
+            className="font-retro -translate-y-4 xl:-translate-y-8 text-pink"
             style={{ fontSize: "clamp(48px, 6vw, 96px)" }}
           >
-            BRACIATE 2025
+            Braciate 2025
           </h2>
         </div>
         <div className="hidden md:block relative w-[11dvw] h-[15dvh] -translate-x-[6dvw]">

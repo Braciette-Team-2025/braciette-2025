@@ -55,7 +55,7 @@ function FAQ() {
   );
 
   return (
-    <section id="faq" className="pb-[20dvh]">
+    <section id="faq" className="pb-[20dvh] scroll-mt-45">
       <div className="w-full h-full flex flex-col justify-center items-center">
         {/* Title with existing stars */}
         <h1

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Jersey_10, Poppins } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -9,9 +9,10 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
-const retro = localFont({
-  src: "../../public/fonts/retro.ttf",
+const retro = Jersey_10({
   variable: "--font-retro",
+  weight: ["400"],
+  subsets: ["latin"],
 });
 
 const yourmate = localFont({
@@ -30,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html data-scroll-behavior="smooth" lang="en" className="scroll-smooth">
       <body
         className={`${poppins.variable} ${retro.variable} ${yourmate.variable}`}
       >
