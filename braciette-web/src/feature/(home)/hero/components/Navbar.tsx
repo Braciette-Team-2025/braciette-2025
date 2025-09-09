@@ -93,12 +93,12 @@ function Navbar() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div
-          className="md:hidden bg-pink font-poppins text-yellow text-center"
+          className="md:hidden bg-pink font-poppins text-yellow text-center h-screen flex flex-col justify-center items-center"
           style={{ boxShadow: "0 18px 20px rgba(0, 0, 0, 0.25)" }}
         >
-          <ul className="flex flex-col items-center justify-center gap-6 py-8">
+          <ul className="flex flex-col items-center justify-center gap-18 py-8 -translate-y-[60px]">
             {navItems.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className="text-4xl font-semibold">
                 <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
                   {item.label}
                 </Link>
