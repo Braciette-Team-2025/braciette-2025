@@ -22,7 +22,7 @@ const hotpicksData = [
 function HotpickCard({ type, imageSrc }: { type: string; imageSrc: string }) {
   return (
     <div className="relative bg-pink p-8 rounded-2xl flex flex-col items-center gap-4 justify-center">
-      <div className="absolute -top-15 -left-20 z-10 w-[157.1px] h-[185.81px]">
+      <div className="absolute -top-10 -left-15 md:-top-15 md:-left-20 z-10 w-[125px] h-[148px] md:w-[157.1px] md:h-[185.81px]">
         <Image
           src="/landing-page/medal.svg"
           alt="Medal"
@@ -58,7 +58,7 @@ function Hotpicks() {
       <h1
         className="text-[120px] text-center font-bold text-green-400 font-yourmate"
         style={{
-          textShadow: "4px 4px 0px #000",
+          textShadow: "4px 4px 0px #000000",
           fontSize: "clamp(48px, 10vw, 120px)",
         }}
       >
@@ -73,7 +73,10 @@ function Hotpicks() {
       </div>
       <h2
         className="text-white text-center font-poppins text-[36px] font-semibold px-20"
-        style={{ fontSize: "clamp(26px, 3vw, 36px)" }}
+        style={{
+          fontSize: "clamp(26px, 3vw, 36px)",
+          textShadow: "2px 2px 0px #000000",
+        }}
       >
         Congratulations on achieving the highest votes!
       </h2>
