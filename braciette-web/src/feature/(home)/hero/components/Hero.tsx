@@ -3,7 +3,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-yellow w-full pt-10 lg:pt-0 h-screen z-40"
+      className="relative bg-yellow w-full pt-10 lg:pt-0 min-h-screen z-40 flex flex-col justify-between"
     >
       <Image
         src="/landing-page/lines.svg"
@@ -59,6 +59,15 @@ function Hero() {
             objectFit="contain"
           />
         </div>
+      </div>
+      <div className="w-full h-[35rem] overflow-hidden flex justify-center items-end">
+        <Image
+          src="/landing-page/blue-wave.svg"
+          alt="Wave"
+          width={50}
+          height={50}
+          className="w-full h-auto mt-35"
+        />
       </div>
     </section>
   );
