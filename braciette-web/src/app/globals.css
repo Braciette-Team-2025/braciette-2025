@@ -10,6 +10,7 @@
   --purple: #56396f;
   --red: #d20001;
   --dark-blue: #00003d;
+  --blue: #0212ee;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -52,6 +53,7 @@
   --color-green: var(--green);
   --color-purple: var(--purple);
   --color-dark-blue: var(--dark-blue);
+  --color-blue: var(--blue);
   --color-red: var(--red);
   --font-retro: var(--font-retro);
   --font-yourmate: var(--font-yourmate);

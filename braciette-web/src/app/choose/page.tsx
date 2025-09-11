@@ -1,0 +1,22 @@
+import Choose from "@/feature/(choose)/choose-lkm/components/Choose";
+import Navbar from "@/feature/(home)/hero/components/Navbar";
+import { Footer } from "@/shared/footer/Footer";
+import Image from "next/image";
+
+export default function ChooseLKM() {
+  return (
+    <>
+      <Navbar />
+      <main className="relative bg-blue py-[20dvh]">
+        <Image
+          src="/landing-page/lines-white.svg"
+          alt="Lines Background"
+          fill={true}
+          objectFit="cover"
+        />
+        <Choose />
+      </main>
+      <Footer />
+    </>
+  );
+}

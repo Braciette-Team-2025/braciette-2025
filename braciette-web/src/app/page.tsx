@@ -4,7 +4,7 @@ import Navbar from "../feature/(home)/hero/components/Navbar";
 import Image from "next/image";
 import { Footer } from "@/shared/footer/Footer";
 import Hotpicks from "@/feature/(home)/hotpicks/components/Hotpicks";
-import FAQ from "@/feature/(home)/faq/FAQ";
+import FAQ from "@/feature/(home)/faq/components/FAQ";
 
 export default function Home() {
   return (
