@@ -6,8 +6,8 @@ import { useState } from "react";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navItems = [
-    { href: "#hero", label: "Home" },
-    { href: "#faq", label: "FAQ" },
+    { href: "/home", label: "Home" },
+    { href: "/faq", label: "FAQ" },
     { href: "/auth/login", label: "Login" },
   ];
 

@@ -27,7 +27,7 @@ const socialMediaLinks = [
 
 export const Footer = () => {
   return (
-    <footer className="bg-[#F3DE2C] text-[#F913A1] py-10 py-12 font-sans">
+    <footer className="bg-[#F3DE2C] text-[#F913A1] py-10 px-12 font-sans">
       <div className="container mx-auto">
         {/* Bagian Atas: Logo & Sosmed */}
         <div className="flex justify-between items-center mb-6">
@@ -39,7 +39,7 @@ export const Footer = () => {
               width={300}
               height={300}
             />
-            <div className="font-extrabold font-retro text-7xl tracking-wider">
+            <div className="font-retro text-7xl tracking-wider">
               <p>BRAWIJAYA</p>
               <p>APPRECIATE</p>
             </div>
