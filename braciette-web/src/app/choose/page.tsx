@@ -7,7 +7,7 @@ export default function ChooseLKM() {
   return (
     <>
       <Navbar />
-      <main className="relative bg-blue py-[20dvh]">
+      <main className="relative bg-blue py-0 md:py-[20dvh]">
         <Image
           src="/landing-page/lines-white.svg"
           alt="Lines Background"
