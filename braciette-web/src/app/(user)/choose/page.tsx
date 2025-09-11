@@ -1,5 +1,5 @@
 import Choose from "@/feature/(choose)/choose-lkm/components/Choose";
-import Navbar from "@/feature/(home)/hero/components/Navbar";
+import Navbar from "@/shared/navbar/Navbar";
 import { Footer } from "@/shared/footer/Footer";
 import Image from "next/image";
 
