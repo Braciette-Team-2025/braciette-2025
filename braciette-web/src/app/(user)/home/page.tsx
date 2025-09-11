@@ -3,6 +3,7 @@ import Hero from "@/feature/(home)/hero/components/Hero";
 import Image from "next/image";
 import Hotpicks from "@/feature/(home)/hotpicks/components/Hotpicks";
 import FAQ from "@/feature/(home)/faq/components/FAQ";
+import About from "@/feature/(home)/about-us/components/About";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
           objectFit="cover"
         />
         <Hero />
+        <About />
         <Guide />
         <Hotpicks />
         <FAQ />
