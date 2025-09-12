@@ -1,27 +1,23 @@
-// src/shared/footer/Footer.tsx
-
 import Image from "next/image";
 import Link from "next/link";
 
-// Ganti semua import SVG dengan import dari react-icons
 import { FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 
-// Definisikan daftar sosial media menggunakan komponen dari react-icons
 const socialMediaLinks = [
   {
     name: "Instagram",
     href: "https://www.instagram.com",
-    icon: <FaInstagram className="text-[#F3DE2C] w-10 h-10" />,
+    icon: <FaInstagram className="text-[#F3DE2C] w-7 h-7" />,
   },
   {
     name: "TikTok",
     href: "https://www.tiktok.com",
-    icon: <FaTiktok className="text-[#F3DE2C] w-10 h-10" />,
+    icon: <FaTiktok className="text-[#F3DE2C] w-7 h-7" />,
   },
   {
     name: "WhatsApp",
     href: "https://www.whatsapp.com",
-    icon: <FaWhatsapp className="text-[#F3DE2C] w-10 h-10" />,
+    icon: <FaWhatsapp className="text-[#F3DE2C] w-7 h-7" />,
   },
 ];
 
@@ -36,10 +32,10 @@ export const Footer = () => {
             <Image
               src="/logobraciette.svg"
               alt="Brawijaya Appreciate Logo"
-              width={300}
-              height={300}
+              width={230}
+              height={230}
             />
-            <div className="font-retro text-7xl tracking-wider">
+            <div className="font-retro text-6xl tracking-wider">
               <p>BRAWIJAYA</p>
               <p>APPRECIATE</p>
             </div>
@@ -53,7 +49,7 @@ export const Footer = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#F913A1] rounded-full p-8 hover:opacity-80 transition-opacity"
+                className="bg-[#F913A1] rounded-full p-6 hover:opacity-80 transition-opacity"
                 aria-label={social.name}
               >
                 {social.icon}
@@ -66,7 +62,7 @@ export const Footer = () => {
         <div className="w-full h-2 bg-[#F913A1] mb-4"></div>
 
         {/* Teks Copyright */}
-        <div className="text-center text-2xl font-semibold font-retro">
+        <div className="text-center text-xl font-semibold font-retro">
           <p>Team IT Brawijaya Appreciate 2025</p>
         </div>
       </div>

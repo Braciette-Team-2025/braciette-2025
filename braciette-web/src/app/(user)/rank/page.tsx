@@ -1,10 +1,10 @@
-// import StfContainer from "@/feature/(user)/stf/container/StfContainer";
 import React from "react";
+import RankContainer from "@/feature/rank/container/RankContainer";
 
 const page = () => {
   return (
     <>
-      {/* <StfContainer /> */}
+      <RankContainer/>
     </>
   );
 };

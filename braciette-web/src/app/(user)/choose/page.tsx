@@ -6,7 +6,6 @@ import Image from "next/image";
 export default function ChooseLKM() {
   return (
     <>
-      <Navbar />
       <main className="relative bg-blue py-0 md:py-[20dvh]">
         <Image
           src="/landing-page/lines-white.svg"
@@ -16,7 +15,6 @@ export default function ChooseLKM() {
         />
         <Choose />
       </main>
-      <Footer />
     </>
   );
 }
