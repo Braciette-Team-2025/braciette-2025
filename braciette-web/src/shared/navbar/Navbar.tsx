@@ -8,32 +8,29 @@ function Navbar() {
   const navItems = [
     { href: "/home", label: "Home" },
     { href: "/faq", label: "FAQ" },
-    { href: "/auth/login", label: "Login" },
+    { href: "/rank", label: "Rank" },
+    { href: "/login", label: "Login" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-99">
-      <div
-        className="flex flex-row justify-between items-center bg-pink p-4 md:p-6"
-        style={{
-          boxShadow: "0 4px 10px rgba(0, 0, 0, 0.25)",
-        }}
-      >
-        <Link href="/" className="w-[60px] h-[60px] md:w-[85px] md:h-[85px]">
+    <nav
+      className="sticky top-0 z-90 bg-pink"
+      style={{
+        boxShadow: "0 4px 10px rgba(0, 0, 0, 0.25)",
+      }}
+    >
+      <div className="flex flex-row justify-between items-center p-4">
+        <Link href="/" className="w-[60px] h-[60px] md:w-[70px] md:h-[70px]">
           <Image
             src="/landing-page/logo.svg"
             alt="Braciate Logo"
-            width={50}
-            height={50}
+            width={30}
+            height={30}
             className="w-full h-full"
           />
         </Link>
 
-        {/* Desktop Menu */}
-        <div
-          className="font-poppins hidden md:flex flex-row gap-20 items-center justify-center text-yellow"
-          style={{ fontSize: "clamp(20px, 3vw, 36px)" }}
-        >
+        <div className="font-poppins hidden md:flex flex-row gap-20 items-center justify-center text-yellow text-2xl md:text-2xl">
           {navItems.map((item) => (
             <div key={item.href} className="relative group ">
               <Link href={item.href}>{item.label}</Link>
@@ -49,7 +46,6 @@ function Navbar() {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -90,7 +86,6 @@ function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div
           className="md:hidden bg-pink font-poppins text-yellow text-center h-screen flex flex-col justify-center items-center"
