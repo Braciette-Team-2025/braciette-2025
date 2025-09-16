@@ -144,7 +144,7 @@ function FAQ() {
             </div>
 
             {/* FAQ Items using shadcn Accordion */}
-            <Accordion type="multiple" className="space-y-4">
+            <Accordion type="multiple" className="space-y-4 overflow-scroll">
               {filteredFAQs.map((faq) => (
                 <AccordionItem
                   key={faq.id}
