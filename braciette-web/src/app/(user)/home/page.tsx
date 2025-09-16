@@ -4,6 +4,7 @@ import Image from "next/image";
 import Hotpicks from "@/feature/(home)/hotpicks/components/Hotpicks";
 import FAQ from "@/feature/(home)/faq/components/FAQ";
 import About from "@/feature/(home)/about-us/components/About";
+import Timeline from "@/feature/(home)/timeline/components/Timeline";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         />
         <Hero />
         <About />
+        <Timeline />
         <Guide />
         <Hotpicks />
         <FAQ />
