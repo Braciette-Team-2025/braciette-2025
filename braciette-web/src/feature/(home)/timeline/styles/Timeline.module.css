@@ -41,7 +41,7 @@
 
 .textBox {
   padding: 20px 30px;
-  background: #ffffff;
+  background: var(--yellow);
   position: relative;
   border-radius: 6px;
   font-size: 15px;
@@ -71,7 +71,7 @@
   position: absolute;
   width: 6px;
   height: 100%;
-  background: #ffffff;
+  background: var(--yellow);
   top: 0;
   left: 50%;
   margin-left: -3px;
@@ -91,7 +91,7 @@
   }
 }
 
-.arrowLeft {
+.leftArrow {
   height: 0;
   width: 0;
   position: absolute;
@@ -99,11 +99,11 @@
   z-index: 1;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  border-left: 15px solid white;
+  border-left: 15px solid var(--yellow);
   right: -15px;
 }
 
-.arrowRight {
+.rightArrow {
   height: 0;
   width: 0;
   position: absolute;
@@ -111,6 +111,39 @@
   z-index: 1;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
-  border-right: 15px solid white;
+  border-right: 15px solid var(--yellow);
   left: -15px;
+}
+
+@media screen and (max-width: 600px) {
+  .timeline {
+    margin: 50px auto;
+  }
+  .timeline::after {
+    left: 11px;
+  }
+  .container {
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 25px;
+  }
+  .text-box {
+    font-size: 13px;
+  }
+  .rightContainer {
+    left: 0;
+  }
+  .rightContainer .balls,
+  .balls {
+    left: -15px;
+  }
+  .leftArrow,
+  .rightArrow {
+    border-right: 15px solid var(--yellow);
+    border-left: 0px;
+    left: -15px;
+  }
+  .timeline::after {
+    animation-range-end: 1800px;
+  }
 }
