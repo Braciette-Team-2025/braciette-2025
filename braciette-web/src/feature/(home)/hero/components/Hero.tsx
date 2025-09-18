@@ -3,7 +3,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-yellow w-full pt-10 lg:pt-0 min-h-screen z-40 flex flex-col justify-between"
+      className="relative bg-yellow w-full pt-0 min-h-screen z-40 flex flex-col justify-between"
     >
       <Image
         src="/landing-page/lines.svg"
@@ -11,9 +11,9 @@ function Hero() {
         fill={true}
         objectFit="cover"
       />
-      <div className="w-full h-full flex flex-col justify-center items-center">
+      <div className="w-full h-screen lg:h-full flex flex-col justify-center items-center">
         <div className="w-max h-max flex flex-col items-center justify-center">
-          <div className="w-[86dvw] h-[25dvh] md:h-[30dvh] lg:h-[50dvh] xl:h-[65dvh] lg:-translate-x-[2dvw] translate-y-[2dvh] lg:translate-y-[10dvh] relative">
+          <div className="w-[86dvw] h-[25dvh] md:h-[30dvh] lg:h-[50dvh] xl:h-[65dvh] lg:-translate-x-[2dvw]  lg:translate-y-[10dvh] relative">
             <Image
               src="/landing-page/hero.svg"
               alt="APPRECIATE"
@@ -31,7 +31,7 @@ function Hero() {
               />
             </div>
             <p
-              className="font-poppins text-purple font-bold w-90 md:w-120 xl:w-180 text-center md:text-right md:self-end"
+              className="-mt-10 md:mt-0 font-poppins text-purple font-bold w-90 md:w-120 xl:w-180 text-center md:text-right md:self-end"
               style={{ fontSize: "clamp(18px, 2vw, 32px)" }}
             >
               Bring The Great Story with Harmonization and Collaborative Simpul
@@ -40,33 +40,31 @@ function Hero() {
           </div>
         </div>
       </div>
-      <div className="absolute w-max h-max top-20 md:top-35 lg:top-40 left-0">
-        <div className="w-[15dvw] md:w-[6dvw] lg:w-[9dvw] h-[35dvh] md:h-[21dvh] lg:h-[40dvh] 2xl:w-[6dvw] relative">
-          <Image
-            src="/landing-page/flower.svg"
-            alt="flower"
-            fill={true}
-            objectFit="contain"
-          />
-        </div>
+      <div className="absolute w-15 md:w-20 lg:w-30 xl:w-40 top-5 left-0">
+        <Image
+          src="/landing-page/flower.svg"
+          alt="flower"
+          width={150}
+          height={150}
+          className="w-full h-auto"
+        />
       </div>
-      <div className="absolute w-max h-max top-120 md:top-150 lg:top-85 right-0">
-        <div className="w-[15dvw] md:w-[6dvw] lg:w-[4dvw] h-[35dvh] md:h-[14dvh] lg:h-[16dvh] 2xl:h-[25dvh] relative rotate-180">
-          <Image
-            src="/landing-page/flower.svg"
-            alt="flower"
-            fill={true}
-            objectFit="contain"
-          />
-        </div>
+      <div className="absolute w-15 xl:w-20 top-110 lg:top-50 right-0 rotate-180">
+        <Image
+          src="/landing-page/flower.svg"
+          alt="flower"
+          width={50}
+          height={50}
+          className="w-full h-auto"
+        />
       </div>
-      <div className="w-full h-[35rem] overflow-hidden flex justify-center items-end">
+      <div className="w-full h-max md:h-[35rem] overflow-hidden flex justify-start items-end xl:items-start">
         <Image
           src="/landing-page/blue-wave.svg"
           alt="Wave"
           width={50}
           height={50}
-          className="w-full h-auto mt-35"
+          className="w-full h-auto"
         />
       </div>
     </section>

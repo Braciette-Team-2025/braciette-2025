@@ -115,6 +115,16 @@
   left: -15px;
 }
 
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .container {
+    width: 60%;
+  }
+
+  .leftContainer {
+    left: -10%;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .timeline {
     margin: 50px auto;
