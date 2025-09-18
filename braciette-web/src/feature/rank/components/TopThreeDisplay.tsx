@@ -11,7 +11,7 @@ export function TopThreeDisplay({ data }: TopThreeDisplayProps) {
   const rank3 = data.find((item) => item.rank === 3);
 
   return (
-    <div className="relative flex justify-center items-end gap-8 mt-12 w-full">
+    <div className="relative flex justify-center items-end gap-16 mt-12 w-full">
       {/* Rank 2 */}
       {rank2 && (
         <CardRank
