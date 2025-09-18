@@ -48,8 +48,16 @@ export function RankContainer() {
     hidden: { scale: 0, rotate: -90 },
     visible: {
       scale: 1,
-      rotate: 0,
-      transition: { type: "spring", stiffness: 260, damping: 20, delay: 0.3 },
+      rotate: 360,
+      transition: {
+        scale: { type: "spring", stiffness: 260, damping: 20, delay: 0.3 },
+        rotate: {
+          repeat: Infinity,
+          repeatType: "loop",
+          ease: "linear",
+          duration: 25,
+        },
+      },
     },
   };
 
@@ -63,28 +71,32 @@ export function RankContainer() {
         className="z-0"
       />
 
-      <AnimatedDiv
+      <motion.div
         variants={leafVariants}
-        className="absolute top-1 -right-2 z-10 transform rotate-180"
+        initial="hidden"
+        animate="visible"
+        className="absolute top-1 -right-28 z-10 transform rotate-180"
       >
         <Image
           src="/login/leaf-green.svg"
           alt="Leaf"
-          width={120}
-          height={120}
+          width={220}
+          height={220}
         />
-      </AnimatedDiv>
-      <AnimatedDiv
+      </motion.div>
+      <motion.div
         variants={leafVariants}
-        className="absolute top-96 -left-2 z-10"
+        initial="hidden"
+        animate="visible"
+        className="absolute top-96 -left-28 z-10"
       >
         <Image
           src="/login/leaf-green.svg"
           alt="Leaf"
-          width={120}
-          height={120}
+          width={220}
+          height={220}
         />
-      </AnimatedDiv>
+      </motion.div>
 
       <div className="relative z-20 flex flex-col items-center w-full gap-16 py-4">
         <AnimatedDiv delay={0}>
