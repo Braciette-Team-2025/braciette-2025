@@ -4,7 +4,6 @@ import React from "react";
 import Image from "next/image";
 import LoginForm from "../components/LoginForm";
 import { motion, Variants } from "framer-motion";
-import { AnimatedDiv } from "@/shared/ui/AnimatedDiv";
 
 const LoginContainer = () => {
   const leafVariants: Variants = {
