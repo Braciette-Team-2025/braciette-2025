@@ -14,3 +14,9 @@ export type LKMCategory = {
 export type Guide = {
     step: string;
 }
+
+export type FAQ = {
+    id: string;
+    question: string;
+    answer: string;
+}
