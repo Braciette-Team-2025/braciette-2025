@@ -1,44 +1,8 @@
 import Image from "next/image";
 import style from "../styles/Timeline.module.css";
-import { title } from "process";
+import { TimelineData } from "../data/timeline_data";
 
 function Timeline() {
-  const timelines: Array<{
-    id: number;
-    title: string;
-    date: string;
-    desc: string;
-    position: string;
-  }> = [
-    {
-      id: 1,
-      title: "United Rhythm UKM Parade",
-      date: "10 September 2025",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      position: "left",
-    },
-    {
-      id: 2,
-      title: "United Rhythm UKM Parade",
-      date: "10 September 2025",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      position: "right",
-    },
-    {
-      id: 3,
-      title: "United Rhythm UKM Parade",
-      date: "10 September 2025",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      position: "left",
-    },
-    {
-      id: 4,
-      title: "United Rhythm UKM Parade",
-      date: "10 September 2025",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      position: "right",
-    },
-  ];
   return (
     <section className="relative flex flex-col justify-center items-center bg-blue">
       <div className="w-full h-full z-40 bg-blue flex flex-col justify-center items-center px-8 md:px-20 2xl:px-30 py-[20dvh]">
@@ -75,7 +39,7 @@ function Timeline() {
           </div>
         </div>
         <div className={`${style.timeline}`}>
-          {timelines.map((timeline) => (
+          {TimelineData.map((timeline) => (
             <div
               key={timeline.id}
               className={`${style.container} ${

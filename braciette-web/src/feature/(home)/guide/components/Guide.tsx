@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GuideCard from "./Guide.card";
+import { GuideData } from "../data/guide-data";
 
 // PAGE ON HOLD, WAITING FOR FINAL DESIGN
 
@@ -75,8 +76,8 @@ function Guide() {
         </div>
       </div>
       <div className="flex flex-row justify-center items-center py-10 flex-wrap gap-12">
-        {guidelines.map((guideline, index) => (
-          <GuideCard key={index} guideline={guideline} />
+        {GuideData.map((guideline, index) => (
+          <GuideCard key={index} guideline={guideline.step} />
         ))}
       </div>
       <div className="flex justify-between items-center md:justify-end">
