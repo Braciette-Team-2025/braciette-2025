@@ -38,7 +38,7 @@ function Hotpicks() {
       }}
     >
       <h1
-        className="text-[120px] text-center font-bold text-green-400 font-yourmate"
+        className="text-[120px] text-center font-bold text-green-400 font-yourmate z-100"
         style={{
           textShadow: "4px 4px 0px #000000",
           fontSize: "clamp(48px, 10vw, 120px)",
