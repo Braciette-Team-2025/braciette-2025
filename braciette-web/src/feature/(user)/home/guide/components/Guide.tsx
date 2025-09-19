@@ -1,7 +1,6 @@
 import Image from "next/image";
 import GuideCard from "./Guide.card";
 import { GuideData } from "../data/guide-data";
-
 // PAGE ON HOLD, WAITING FOR FINAL DESIGN
 
 function Guide() {
