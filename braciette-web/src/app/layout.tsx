@@ -23,6 +23,9 @@ const yourmate = localFont({
 export const metadata: Metadata = {
   title: "Braciate 2025",
   description: "Brawijaya Appreciate Website",
+   icons: {
+    icon: "/logobraciette.svg",
+  },
 };
 
 export default function RootLayout({

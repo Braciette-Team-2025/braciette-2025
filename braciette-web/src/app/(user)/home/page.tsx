@@ -1,10 +1,10 @@
-import Guide from "@/feature/(home)/guide/components/Guide";
-import Hero from "@/feature/(home)/hero/components/Hero";
+import Guide from "@/feature/(user)/home/guide/components/Guide";
+import Hero from "@/feature/(user)/home/hero/components/Hero";
 import Image from "next/image";
-import Hotpicks from "@/feature/(home)/hotpicks/components/Hotpicks";
-import FAQ from "@/feature/(home)/faq/components/FAQ";
-import About from "@/feature/(home)/about-us/components/About";
-import Timeline from "@/feature/(home)/timeline/components/Timeline";
+import Hotpicks from "@/feature/(user)/home/hotpicks/components/Hotpicks";
+import FAQ from "@/feature/(user)/home/faq/components/FAQ";
+import About from "@/feature/(user)/home/about-us/components/About";
+import Timeline from "@/feature/(user)/home/timeline/components/Timeline";
 
 export default function Home() {
   return (

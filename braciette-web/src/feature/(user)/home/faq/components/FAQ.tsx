@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/accordion";
 import { Input } from "@/components/ui/input";
 
-// Mock FAQ data - easy to replace with real data later
 const FAQ_DATA: Array<{ id: string; question: string; answer: string }> = [
   {
     id: "item-1",
