@@ -33,7 +33,7 @@ function GuideCard({ guideline }: GuideCardProps) {
           />
         </div>
       </div>
-      <p className="p-8 lg:p-14 text-center bg-yellow text-pink border-black border-2 font-poppins font-bold text-[14px] lg:text-[24px]">
+      <p className="p-8 lg:p-10 text-center bg-yellow text-pink border-black border-2 font-poppins font-bold text-[14px] lg:text-[18px]">
         {guideline}
       </p>
     </div>

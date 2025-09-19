@@ -76,7 +76,7 @@ const placeNow = (el: HTMLElement, slot: Slot, skew: number) =>
 
 const CardSwap: React.FC<CardSwapProps> = ({
   width = 500,
-  height = 400,
+  height = 300,
   cardDistance = 60,
   verticalDistance = 70,
   delay = 5000,

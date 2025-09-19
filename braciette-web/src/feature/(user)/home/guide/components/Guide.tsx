@@ -1,15 +1,8 @@
 import Image from "next/image";
 import GuideCard from "./Guide.card";
 import { GuideData } from "../data/guide-data";
-// PAGE ON HOLD, WAITING FOR FINAL DESIGN
 
 function Guide() {
-  const guidelines = [
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  ];
-
   return (
     <section className="w-full h-full py-[20dvh] z-50">
       <div className="w-full flex flex-row justify-center md:justify-between items-center">
