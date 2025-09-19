@@ -5,6 +5,7 @@ import Timeline from "../timeline/components/Timeline";
 import Guide from "../guide/components/Guide";
 import Hotpicks from "../hotpicks/components/Hotpicks";
 import FAQ from "../faq/components/FAQ";
+import Sponsorship from "../sponsorship/components/Sponsorship";
 
 export function HomeContainer() {
   return (
@@ -21,6 +22,7 @@ export function HomeContainer() {
       <Guide />
       <Hotpicks />
       <FAQ />
+      <Sponsorship />
     </main>
   );
 }
