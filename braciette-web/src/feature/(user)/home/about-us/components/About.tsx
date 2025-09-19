@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import CardSwap, { Card } from "../../../../components/CardSwap";
+import CardSwap, { Card } from "../../../../../components/CardSwap";
 
 function About() {
   return (
