@@ -1,4 +1,6 @@
-import Choose from "@/feature/(user)/choose/components/Choose";
+import Choose from "@/feature/(user)/choose/choose-lkm/components/Choose";
+import Navbar from "@/shared/navbar/Navbar";
+import { Footer } from "@/shared/footer/Footer";
 import Image from "next/image";
 
 export default function ChooseLKM() {

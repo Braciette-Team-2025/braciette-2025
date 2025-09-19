@@ -40,6 +40,36 @@ const FAQ_DATA: Array<{ id: string; question: string; answer: string }> = [
     answer:
       "The results will be available immediately after the voting period ends. You can check the 'Results' page to see the outcomes in real time once voting closes.",
   },
+  {
+    id: "item-6",
+    question: "How do I cast my vote on this platform?",
+    answer:
+      "To cast your vote, simply log in to your account, navigate to the voting page, select your preferred option, and click the 'Submit Vote' button. You'll receive a confirmation once your vote is recorded.",
+  },
+  {
+    id: "item-7",
+    question: "Can I change my vote after submitting it?",
+    answer:
+      "No, once a vote is submitted, it cannot be changed or withdrawn. Please review your selection carefully before confirming your vote.",
+  },
+  {
+    id: "item-8",
+    question: "Is my vote anonymous?",
+    answer:
+      "Yes, all votes are kept anonymous. The system only records the number of votes each option receives, without linking votes to individual accounts.",
+  },
+  {
+    id: "item-9",
+    question: "Do I need an account to vote?",
+    answer:
+      "Yes, you must create and log in to your account to ensure that each user can only vote once. This helps maintain fairness and prevents duplicate voting.",
+  },
+  {
+    id: "item-10",
+    question: "When will the voting results be announced?",
+    answer:
+      "The results will be available immediately after the voting period ends. You can check the 'Results' page to see the outcomes in real time once voting closes.",
+  },
 ];
 
 function FAQ() {
@@ -55,7 +85,25 @@ function FAQ() {
 
   return (
     <section id="faq" className="pb-[20dvh] scroll-mt-45">
-      <div className="w-full h-full flex flex-col justify-center items-center">
+      <div className="w-full h-full flex flex-col justify-center items-center relative">
+        <div className="hidden 2xl:block absolute w-25 right-0 top-20">
+          <Image
+            src="/landing-page/yellow-star-group.svg"
+            alt="stars"
+            width={100}
+            height={100}
+            className="w-full h-auto"
+          />
+        </div>
+        <div className="hidden 2xl:block absolute w-25 left-0 top-50 rotate-180">
+          <Image
+            src="/landing-page/yellow-star-group.svg"
+            alt="stars"
+            width={100}
+            height={100}
+            className="w-full h-auto"
+          />
+        </div>
         {/* Title with existing stars */}
         <h1
           className="relative font-yourmate text-green text-center mb-16"
@@ -63,35 +111,38 @@ function FAQ() {
         >
           Frequently Asked Question
           {/* Star 1 */}
-          <div className="hidden md:block absolute -top-12 -left-6 lg:-top-10 lg:-left-10 xl:-top-9 xl:-left-18">
-            <div className="relative w-[3dvw] h-[9dvh]">
+          <div className="hidden xl:block absolute -top-12 -left-18">
+            <div className="w-15">
               <Image
                 src="/landing-page/star-pink.svg"
                 alt="Lines Background"
-                fill={true}
-                objectFit="contain"
+                width={100}
+                height={100}
+                className="w-full h-auto"
               />
             </div>
           </div>
           {/* Star 2 */}
-          <div className="hidden md:block absolute top-2 -left-10 lg:top-6 lg:-left-16 xl:top-8 xl:-left-24">
-            <div className="relative w-[3dvw] h-[5dvh]">
+          <div className="hidden xl:block absolute top-12 -left-20">
+            <div className="w-8">
               <Image
                 src="/landing-page/star-pink.svg"
                 alt="Lines Background"
-                fill={true}
-                objectFit="contain"
+                width={100}
+                height={100}
+                className="w-full h-auto"
               />
             </div>
           </div>
           {/* Star 3 */}
-          <div className="hidden md:block absolute top-1 -right-8 lg:top-3 lg:-right-10 xl:top-9 xl:-right-18">
-            <div className="relative w-[3dvw] h-[9dvh]">
+          <div className="hidden xl:block absolute top-8 -right-18">
+            <div className="w-15">
               <Image
                 src="/landing-page/star-pink.svg"
                 alt="Lines Background"
-                fill={true}
-                objectFit="contain"
+                width={100}
+                height={100}
+                className="w-full h-auto"
               />
             </div>
           </div>
@@ -143,7 +194,10 @@ function FAQ() {
             </div>
 
             {/* FAQ Items using shadcn Accordion */}
-            <Accordion type="multiple" className="space-y-4 overflow-scroll">
+            <Accordion
+              type="multiple"
+              className="space-y-4 max-h-[20rem] overflow-scroll border-b-2 pb-4"
+            >
               {filteredFAQs.map((faq) => (
                 <AccordionItem
                   key={faq.id}

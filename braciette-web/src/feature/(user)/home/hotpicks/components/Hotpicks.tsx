@@ -1,23 +1,5 @@
 import Image from "next/image";
-
-const hotpicksData = [
-  {
-    type: "HIMPUNAN",
-    imageSrc: "/landing-page/org-placeholder.svg",
-  },
-  {
-    type: "DPM",
-    imageSrc: "/landing-page/org-placeholder.svg",
-  },
-  {
-    type: "BEM",
-    imageSrc: "/landing-page/org-placeholder.svg",
-  },
-  {
-    type: "UKM",
-    imageSrc: "/landing-page/org-placeholder.svg",
-  },
-];
+import { HotpicksData } from "../data/hotpicks-data";
 
 function HotpickCard({ type, imageSrc }: { type: string; imageSrc: string }) {
   return (
@@ -65,9 +47,9 @@ function Hotpicks() {
         HOT PICKS !!!
       </h1>
       <div className="w-full flex flex-row flex-wrap justify-center items-center gap-18 px-20">
-        {hotpicksData.map((item, index) => (
+        {HotpicksData.map((item, index) => (
           <div key={index} className="w-max">
-            <HotpickCard imageSrc={item.imageSrc} type={item.type} />
+            <HotpickCard imageSrc={item.orgImage} type={item.name} />
           </div>
         ))}
       </div>
