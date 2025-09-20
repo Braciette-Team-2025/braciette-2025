@@ -1,20 +1,24 @@
-import Choose from "@/feature/(user)/choose/choose-lkm/components/Choose";
-import Navbar from "@/shared/navbar/Navbar";
-import { Footer } from "@/shared/footer/Footer";
-import Image from "next/image";
+import ChooseVoteContainer from "@/feature/(user)/choose/container/ChooseVoteContainer";
+import React from "react";
 
-export default function ChooseLKM() {
+const PageLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <>
-      <main className="relative bg-blue py-0 md:py-[20dvh]">
-        <Image
-          src="/landing-page/lines-white.svg"
-          alt="Lines Background"
-          fill={true}
-          objectFit="cover"
-        />
-        <Choose />
-      </main>
-    </>
+    <div
+      className="w-full min-h-screen bg-blue"
+      style={{
+        backgroundImage: "url(/landing-page/lines-white.svg)",
+        backgroundSize: "cover",
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default function PilihanVotingPage() {
+  return (
+    <PageLayout>
+      <ChooseVoteContainer />
+    </PageLayout>
   );
 }
