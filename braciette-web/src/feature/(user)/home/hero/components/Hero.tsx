@@ -57,7 +57,7 @@ function Hero() {
           </div>
         </div>
       </div>
-      <div className="absolute w-15 md:w-20 lg:w-30 xl:w-40 top-10 left-0">
+      <div className="absolute w-15 md:w-20 lg:w-25 xl:w-30 top-10 left-0">
         <Image
           src="/landing-page/flower.svg"
           alt="flower"
