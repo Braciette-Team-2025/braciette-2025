@@ -2,14 +2,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import RankNav from "./components/Rank.Navbar";
+import LoginNav from "./components/Login.Navbar";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navItems = [
     { href: "/home", label: "Home" },
     { href: "/faq", label: "FAQ" },
-    { href: "/rank", label: "Rank" },
-    { href: "/login", label: "Login" },
+    // { href: "/rank", label: "Rank" },
+    // { href: "/login", label: "Login" },
   ];
 
   return (
@@ -30,12 +32,12 @@ function Navbar() {
           />
         </Link>
 
-        <div className="font-poppins hidden md:flex flex-row gap-20 items-center justify-center text-yellow text-2xl md:text-2xl">
+        <div className="font-poppins hidden md:flex flex-row gap-20 items-center justify-center text-yellow text-xl font-medium md:text-2xl">
           {navItems.map((item) => (
-            <div key={item.href} className="relative group ">
+            <div key={item.href} className="relative group">
               <Link href={item.href}>{item.label}</Link>
               <span className="absolute left-1/2 -translate-x-1/2 top-full flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                {Array.from({ length: 6 }).map((_, i) => (
+                {Array.from({ length: 5 }).map((_, i) => (
                   <span
                     key={i}
                     className="w-1.5 h-1.5 bg-yellow-300 rounded-full"
@@ -44,6 +46,8 @@ function Navbar() {
               </span>
             </div>
           ))}
+          <RankNav />
+          <LoginNav />
         </div>
 
         <div className="md:hidden">

@@ -3,7 +3,7 @@ import { HotpicksData } from "../data/hotpicks-data";
 
 function HotpickCard({ type, imageSrc }: { type: string; imageSrc: string }) {
   return (
-    <div className="relative bg-pink p-6 rounded-2xl flex flex-col items-center gap-4 justify-center w-[280px]">
+    <div className="relative bg-pink p-6 rounded-2xl flex flex-col items-center gap-4 justify-center w-max">
       <div className="absolute -top-8 -left-16 z-10 w-[160px] h-[118px]">
         <Image
           src="/landing-page/medal.svg"
@@ -13,8 +13,14 @@ function HotpickCard({ type, imageSrc }: { type: string; imageSrc: string }) {
         />
       </div>
       <div className="bg-white rounded-lg p-8">
-        <div className="relative h-32 w-32">
-          <Image src={imageSrc} alt={type} layout="fill" objectFit="contain" />
+        <div className="w-[10dvh] md:w-[10dvw]">
+          <Image
+            src={imageSrc}
+            alt={type}
+            width={100}
+            height={100}
+            className="w-full h-auto"
+          />
         </div>
       </div>
       <div className="w-full text-center">
@@ -46,7 +52,7 @@ function Hotpicks() {
       >
         HOT PICKS !!!
       </h1>
-      <div className="w-full flex flex-row flex-wrap justify-center items-center gap-18 px-20">
+      <div className="w-full flex flex-row flex-wrap justify-center items-center gap-12 px-12">
         {HotpicksData.map((item, index) => (
           <div key={index} className="w-max">
             <HotpickCard imageSrc={item.orgImage} type={item.name} />
