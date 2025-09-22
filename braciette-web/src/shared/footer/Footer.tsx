@@ -7,17 +7,17 @@ const socialMediaLinks = [
   {
     name: "Instagram",
     href: "https://www.instagram.com",
-    icon: <FaInstagram className="text-[#F3DE2C] w-7 h-7" />,
+    icon: <FaInstagram className="text-[#F3DE2C] w-full h-auto" />,
   },
   {
     name: "TikTok",
     href: "https://www.tiktok.com",
-    icon: <FaTiktok className="text-[#F3DE2C] w-7 h-7" />,
+    icon: <FaTiktok className="text-[#F3DE2C] w-full h-auto" />,
   },
   {
     name: "WhatsApp",
     href: "https://www.whatsapp.com",
-    icon: <FaWhatsapp className="text-[#F3DE2C] w-7 h-7" />,
+    icon: <FaWhatsapp className="text-[#F3DE2C] w-full h-auto" />,
   },
 ];
 
@@ -26,18 +26,33 @@ export const Footer = () => {
     <footer className="bg-[#F3DE2C] text-[#F913A1] py-10 px-12 font-sans">
       <div className="container mx-auto">
         {/* Bagian Atas: Logo & Sosmed */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-0 justify-between items-center mb-6">
           {/* Sisi Kiri: Logo & Nama Website */}
-          <div className="flex items-center gap-8">
-            <Image
-              src="/logobraciette.svg"
-              alt="Brawijaya Appreciate Logo"
-              width={230}
-              height={230}
-            />
-            <div className="font-retro text-6xl tracking-wider">
+          <div className="flex items-center justify-between md:justify-start w-full gap-4 md:gap-8">
+            <div className="w-[14dvw] md:w-[10dvw]">
+              <Image
+                src="/logobraciette.svg"
+                alt="Brawijaya Appreciate Logo"
+                width={230}
+                height={230}
+                className="w-full h-auto"
+              />
+            </div>
+            <div
+              className="font-retro text-6xl tracking-wider"
+              style={{ fontSize: "clamp(30px, 5vw + 1px, 60px)" }}
+            >
               <p>BRAWIJAYA</p>
               <p>APPRECIATE</p>
+            </div>
+            <div className="md:hidden w-[14dvw] md:w-[10dvw]">
+              <Image
+                src="/logobraciette.svg"
+                alt="Brawijaya Appreciate Logo"
+                width={230}
+                height={230}
+                className="w-full h-auto"
+              />
             </div>
           </div>
 
@@ -49,10 +64,12 @@ export const Footer = () => {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#F913A1] rounded-full p-6 hover:opacity-80 transition-opacity"
+                className="bg-[#F913A1] rounded-full p-[2dvw] lg:p-[1dvw] hover:opacity-80 transition-opacity"
                 aria-label={social.name}
               >
-                {social.icon}
+                <div className="w-[4dvw] md:w-[3dvw] lg:w-[2dvw]">
+                  {social.icon}
+                </div>
               </Link>
             ))}
           </div>
