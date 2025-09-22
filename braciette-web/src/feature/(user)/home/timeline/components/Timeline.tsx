@@ -1,5 +1,6 @@
 import Image from "next/image";
 import style from "../styles/Timeline.module.css";
+import animate from "../../styles/Animation.module.css";
 import { TimelineData } from "../data/timeline_data";
 
 function Timeline() {
@@ -63,20 +64,26 @@ function Timeline() {
           ))}
         </div>
       </div>
-      <div className="hidden xl:block absolute z-50 top-30 right-0">
+      <div
+        className={`hidden xl:block w-[20dvw] absolute z-50 top-45 -right-[12%] ${animate.spin}`}
+      >
+        <Image
+          src="/landing-page/flower-pink.svg"
+          alt="flower"
+          width={240}
+          height={240}
+          className="w-full h-auto"
+        />
+      </div>
+      <div
+        className={`hidden xl:block w-[12dvw] absolute z-50 top-320 -left-[6%] rotate-180 ${animate.spin}`}
+      >
         <Image
           src="/landing-page/flower-pink.svg"
           alt="flower"
           width={150}
           height={150}
-        />
-      </div>
-      <div className="hidden xl:block absolute z-50 top-320 left-0 rotate-180">
-        <Image
-          src="/landing-page/flower-pink.svg"
-          alt="flower"
-          width={80}
-          height={80}
+          className="w-full h-auto"
         />
       </div>
     </section>

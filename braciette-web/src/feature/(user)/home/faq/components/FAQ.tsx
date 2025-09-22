@@ -22,7 +22,7 @@ function FAQ() {
   );
 
   return (
-    <section id="faq" className="pb-[20dvh] scroll-mt-45 overflow-hidden">
+    <section id="faq" className="pb-[20dvh] scroll-mt-45">
       <div className="w-full h-full flex flex-col justify-center items-center relative">
         <div className="hidden 2xl:block absolute w-25 right-0 top-20">
           <Image

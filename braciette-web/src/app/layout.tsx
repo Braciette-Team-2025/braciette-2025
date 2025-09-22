@@ -23,7 +23,7 @@ const yourmate = localFont({
 export const metadata: Metadata = {
   title: "Braciate 2025",
   description: "Brawijaya Appreciate Website",
-   icons: {
+  icons: {
     icon: "/logobraciette.svg",
   },
 };
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html data-scroll-behavior="smooth" lang="en" className="scroll-smooth">
       <body
-        className={`${poppins.variable} ${retro.variable} ${yourmate.variable}`}
+        className={`${poppins.variable} ${retro.variable} ${yourmate.variable} bg-yellow`}
       >
         {children}
       </body>

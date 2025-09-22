@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import RankNav from "./components/Rank.Navbar";
 import LoginNav from "./components/Login.Navbar";
+import animate from "../../feature/(user)/home/styles/Animation.module.css";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +17,7 @@ function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-90 bg-pink"
+      className={`sticky top-0 z-90 bg-pink ${animate.slideFadeIn}`}
       style={{
         boxShadow: "0 4px 10px rgba(0, 0, 0, 0.25)",
       }}
