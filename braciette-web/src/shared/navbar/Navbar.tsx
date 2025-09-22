@@ -9,8 +9,8 @@ import animate from "../../feature/(user)/home/styles/Animation.module.css";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navItems = [
-    { href: "/home", label: "Home" },
-    { href: "/faq", label: "FAQ" },
+    { href: "#home", label: "Home" },
+    { href: "#faq", label: "FAQ" },
     // { href: "/rank", label: "Rank" },
     // { href: "/login", label: "Login" },
   ];
@@ -96,14 +96,28 @@ function Navbar() {
           className="md:hidden bg-pink font-poppins text-yellow text-center h-screen flex flex-col justify-center items-center"
           style={{ boxShadow: "0 18px 20px rgba(0, 0, 0, 0.25)" }}
         >
-          <ul className="flex flex-col items-center justify-center gap-18 py-8 -translate-y-[60px]">
+          <ul className="flex flex-col items-center justify-center gap-16 py-8 -translate-y-[60px]">
             {navItems.map((item) => (
-              <li key={item.href} className="text-4xl font-semibold">
-                <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
+              <div key={item.href} className="relative group">
+                <Link href={item.href} className="text-4xl font-medium">
                   {item.label}
                 </Link>
-              </li>
+                <span className="absolute left-1/2 -translate-x-1/2 top-full flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span
+                      key={i}
+                      className="w-1.5 h-1.5 bg-yellow-300 rounded-full"
+                    />
+                  ))}
+                </span>
+              </div>
             ))}
+            <li className="text-4xl font-medium">
+              <RankNav />
+            </li>
+            <li className="text-4xl font-medium">
+              <LoginNav />
+            </li>
           </ul>
         </div>
       )}

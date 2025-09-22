@@ -16,7 +16,41 @@ function RankNav() {
         </span>
       </div>
       <div
-        className={`absolute flex flex-col bg-pink py-2 px-4 ${
+        className={`${
+          isOpen ? "block" : "hidden"
+        } md:hidden flex flex-row my-12 gap-8 text-2xl`}
+      >
+        <div className="flex flex-col gap-4">
+          <Link
+            href="/rank"
+            className="p-2 hover:bg-yellow hover:text-pink transition-all duration-150"
+          >
+            DPM
+          </Link>
+          <Link
+            href="/rank"
+            className="p-2 hover:bg-yellow hover:text-pink transition-all duration-150"
+          >
+            BEM
+          </Link>
+        </div>
+        <div className="flex flex-col gap-4">
+          <Link
+            href="/rank"
+            className="p-2 hover:bg-yellow hover:text-pink transition-all duration-150"
+          >
+            HIMA
+          </Link>
+          <Link
+            href="/rank"
+            className="p-2 hover:bg-yellow hover:text-pink transition-all duration-150"
+          >
+            UKM
+          </Link>
+        </div>
+      </div>
+      <div
+        className={`hidden md:flex absolute flex-col bg-pink py-2 px-4 ${
           isOpen ? "top-20 opacity-100" : "-top-100 opacity-0"
         } -left-[80%] transition-all duration-200 font-medium font-poppins`}
       >
