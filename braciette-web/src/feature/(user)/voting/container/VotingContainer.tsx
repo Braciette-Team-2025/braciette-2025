@@ -1,52 +1,41 @@
 "use client";
 
-import { useState, useMemo } from "react";
 import Image from "next/image";
+import { Variants } from "framer-motion";
 import { CategoryInfoCard } from "../components/CategoryInfoCard";
 import { VotingForm } from "../components/VotingForm";
 import { SuccessModal } from "../components/SuccessModal";
-import { allCandidates } from "../data/dummy";
-import { Candidate } from "../types";
-import { Variants } from "framer-motion";
 import { AnimatedDiv } from "@/shared/ui/AnimatedDiv";
+import { useVotingPage } from "../hooks/useVotingPage";
 
 type VotingContainerProps = {
   categorySlug: string;
 };
 
+const getCategoryDisplayName = (slug: string) => {
+  const map: { [key: string]: string } = {
+    bem: "BEM",
+    dpm: "DPM",
+    hima: "HIMA",
+    ukm: "UKM",
+  };
+  return map[slug.toLowerCase()] || slug;
+};
+
 export function VotingContainer({ categorySlug }: VotingContainerProps) {
-  const [selectedCandidate, setSelectedCandidate] = useState<Candidate | null>(
-    null
-  );
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [hasVoted, setHasVoted] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const candidatesForCategory = useMemo(
-    () => allCandidates[categorySlug] || [],
-    [categorySlug]
-  );
-  
-  const filteredCandidates = candidatesForCategory.filter((candidate) =>
-    candidate.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleSave = () => {
-    if (!selectedCandidate) return;
-
-    setIsLoading(true);
-    setTimeout(() => {
-      console.log("Vote saved for:", selectedCandidate.name);
-      setIsLoading(false);
-      setIsSuccess(true);
-      setHasVoted(true);
-    }, 1500);
-  };
+  const {
+    isLoadingNominations,
+    isError,
+    isLoadingVote,
+    isSuccess,
+    hasVoted,
+    filteredCandidates,
+    selectedCandidate,
+    searchTerm,
+    setSelectedCandidate,
+    handleSearchChange,
+    handleSave,
+  } = useVotingPage(categorySlug);
 
   const popVariants: Variants = {
     hidden: { scale: 0.5, opacity: 0 },
@@ -60,6 +49,24 @@ export function VotingContainer({ categorySlug }: VotingContainerProps) {
       },
     },
   };
+
+  const displayName = getCategoryDisplayName(categorySlug);
+
+  if (isLoadingNominations) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-white text-2xl">
+        Loading Nominations...
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-500 text-2xl">
+        Failed to load nominations.
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-center gap-6 md:gap-10 py-10 px-4">
@@ -79,7 +86,7 @@ export function VotingContainer({ categorySlug }: VotingContainerProps) {
       <AnimatedDiv delay={0.2} className="w-full max-w-5xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-10 gap-2 items-center">
           <div className="md:col-span-3">
-            <CategoryInfoCard categoryName={categorySlug} />
+            <CategoryInfoCard categoryName={displayName} />
           </div>
           <div className="md:col-span-7">
             <VotingForm
@@ -87,7 +94,7 @@ export function VotingContainer({ categorySlug }: VotingContainerProps) {
               selectedCandidate={selectedCandidate}
               onSelectCandidate={setSelectedCandidate}
               onSave={handleSave}
-              isLoading={isLoading}
+              isLoading={isLoadingVote}
               hasVoted={hasVoted}
               searchTerm={searchTerm}
               onSearchChange={handleSearchChange}

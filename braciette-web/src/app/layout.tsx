@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Jersey_10, Poppins } from "next/font/google";
 import localFont from "next/font/local";
+import { AuthProvider } from "@/shared/context/AuthContext";
+import { ToastProvider } from "@/shared/context/ToastContext";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -38,7 +40,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${retro.variable} ${yourmate.variable} bg-yellow`}
       >
-        {children}
+        <ToastProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ToastProvider>
       </body>
     </html>
   );

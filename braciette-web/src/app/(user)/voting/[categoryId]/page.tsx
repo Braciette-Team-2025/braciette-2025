@@ -16,16 +16,16 @@ const PageLayout = ({ children }: { children: React.ReactNode }) => {
 
 type PageProps = {
   params: {
-    categorySlug: string;
+    categoryId: string;
   };
 };
 
 export default function VotingPage({ params }: PageProps) {
-  const { categorySlug } = params;
+  const { categoryId } = params;
 
   return (
     <PageLayout>
-      <VotingContainer categorySlug={categorySlug} />
+      <VotingContainer categorySlug={categoryId} />
     </PageLayout>
   );
 }
