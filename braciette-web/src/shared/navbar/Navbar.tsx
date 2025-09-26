@@ -77,6 +77,19 @@ function Navbar() {
           </div>
 
           {isLoading ? (
+            <div className="w-32 h-10 bg-yellow/20 rounded-md animate-pulse" />
+          ) : (
+            <div
+              className={`${
+                isAuthenticated ? "block" : "hidden"
+              } relative group`}
+            >
+              <Link href="/choose">Vote</Link>
+              <NavHoverEffect />
+            </div>
+          )}
+
+          {isLoading ? (
             <div className="w-20 h-8 bg-yellow/20 rounded-md animate-pulse" />
           ) : isAuthenticated ? (
             <div className="relative group">
@@ -163,6 +176,20 @@ function Navbar() {
                     </Link>
                   ))}
                 </div>
+              )}
+            </li>
+
+            <li
+              className={`${
+                isAuthenticated ? "block" : "hidden"
+              } text-4xl font-medium`}
+            >
+              {isLoading ? (
+                <div className="w-32 h-10 bg-yellow/20 rounded-md animate-pulse" />
+              ) : (
+                <Link href="/login" onClick={() => setIsMenuOpen(false)}>
+                  Vote
+                </Link>
               )}
             </li>
 
