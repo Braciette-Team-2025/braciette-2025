@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Navbar from "@/shared/navbar/Navbar";
 import { Footer } from "@/shared/footer/Footer";
+import { AuthProvider } from "@/shared/context/AuthContext";
 export default function UserLayout({
   children,
 }: {
@@ -8,9 +9,13 @@ export default function UserLayout({
 }) {
   return (
     <>
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
+      <AuthProvider>
+        <Navbar />
+        <Suspense>
+          <main>{children}</main>
+        </Suspense>
+        <Footer />
+      </AuthProvider>
     </>
   );
 }
