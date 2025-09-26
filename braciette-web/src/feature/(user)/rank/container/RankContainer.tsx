@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { CategorySwitcher } from "../components/CategorySwitcher";
@@ -27,8 +27,27 @@ const fadeVariants: Variants = {
   },
 };
 
-export function RankContainer() {
-  const [categoryIndex, setCategoryIndex] = useState(0);
+export function RankContainer({
+  initialCategory,
+}: {
+  initialCategory?: string;
+}) {
+  const findInitialIndex = (categorySlug?: string) => {
+    if (!categorySlug) return 0;
+    const index = dummyData.findIndex((cat) => cat.id === categorySlug);
+    return index !== -1 ? index : 0;
+  };
+
+  const [categoryIndex, setCategoryIndex] = useState(() =>
+    findInitialIndex(initialCategory)
+  );
+
+  useEffect(() => {
+    if (initialCategory) {
+      const newIndex = findInitialIndex(initialCategory);
+      setCategoryIndex(newIndex);
+    }
+  }, [initialCategory]);
 
   const handleNextCategory = () => {
     setCategoryIndex((prevIndex) => (prevIndex + 1) % dummyData.length);
@@ -118,7 +137,6 @@ export function RankContainer() {
 
         <div className="relative w-full flex flex-col items-center">
           <AnimatePresence mode="wait">
-            {" "}
             <motion.div
               key={categoryIndex}
               variants={fadeVariants}

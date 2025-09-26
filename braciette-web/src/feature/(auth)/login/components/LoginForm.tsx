@@ -1,18 +1,35 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useAuth } from "@/shared/context/AuthContext";
+import { Loader2 } from "lucide-react";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const router = useRouter();
+  const { login } = useAuth();
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ email, password });
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      await login({ id, password });
+      router.push("/choose");
+    } catch (err) {
+      setError("Login gagal. Periksa kembali ID dan password Anda.");
+      console.error(err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -22,15 +39,15 @@ const LoginForm = () => {
     >
       <div className="w-full flex flex-col gap-5">
         <div className="grid w-full items-center gap-2.5">
-          <Label htmlFor="email" className="text-black font-bold text-base">
+          <Label htmlFor="id" className="text-black font-bold text-base">
             Email UB
           </Label>
           <Input
-            id="email"
-            type="email"
+            id="id"
+            type="text"
             placeholder="Masukkan email UB..."
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={id}
+            onChange={(e) => setId(e.target.value)}
             required
             className="bg-white rounded-[12px] h-12 text-base focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           />
@@ -51,7 +68,12 @@ const LoginForm = () => {
         </div>
       </div>
 
-      <Button variant="primary" size="sm" type="submit" className="mt-6 text-lg">
+      <Button
+        variant="primary"
+        size="sm"
+        type="submit"
+        className="mt-6 text-lg"
+      >
         Sign In
       </Button>
     </form>
