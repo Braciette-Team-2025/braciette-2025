@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type CategorySwitcherProps = {
   categoryName: string;
@@ -6,7 +6,11 @@ type CategorySwitcherProps = {
   onNext: () => void;
 };
 
-export function CategorySwitcher({ categoryName, onPrev, onNext }: CategorySwitcherProps) {
+export function CategorySwitcher({
+  categoryName,
+  onPrev,
+  onNext,
+}: CategorySwitcherProps) {
   return (
     <div className="flex items-center justify-center gap-16 mt-4">
       <button
@@ -17,7 +21,9 @@ export function CategorySwitcher({ categoryName, onPrev, onNext }: CategorySwitc
         <ChevronLeft className="h-10 w-10" />
       </button>
 
-      <h2 className="font-retro text-green text-7xl tracking-wider">{categoryName}</h2>
+      <h2 className="font-retro text-green text-7xl tracking-wider text-center">
+        {categoryName}
+      </h2>
 
       <button
         onClick={onNext}

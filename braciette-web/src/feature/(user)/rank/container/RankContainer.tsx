@@ -94,7 +94,7 @@ export function RankContainer({
         variants={leafVariants}
         initial="hidden"
         animate="visible"
-        className="absolute top-1 -right-28 z-10 transform rotate-180"
+        className="hidden xl:block absolute top-1 -right-28 z-10 transform rotate-180"
       >
         <Image
           src="/login/leaf-green.svg"
@@ -107,7 +107,7 @@ export function RankContainer({
         variants={leafVariants}
         initial="hidden"
         animate="visible"
-        className="absolute top-96 -left-28 z-10"
+        className="hidden xl:block absolute top-96 -left-28 z-10"
       >
         <Image
           src="/login/leaf-green.svg"
