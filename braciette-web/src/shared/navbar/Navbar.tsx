@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useAuth } from "@/shared/context/AuthContext";
 import { rankDropdownLinks } from "@/shared/data/dataNav";
+import { Menu, X } from "lucide-react";
 
 const NavHoverEffect = () => (
   <span className="absolute left-1/2 -translate-x-1/2 top-full flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -19,13 +20,13 @@ function Navbar() {
   const { isAuthenticated, logout, isLoading } = useAuth();
 
   const navItems = [
-    { href: "/home", label: "Home" },
+    { href: "/", label: "Home" },
     { href: "/#faq", label: "FAQ" },
   ];
 
   return (
     <nav
-      className="sticky top-0 z-99 bg-pink"
+      className="sticky top-0 z-50 bg-pink"
       style={{ boxShadow: "0 4px 10px rgba(0, 0, 0, 0.25)" }}
     >
       <div className="flex flex-row justify-between items-center p-4 max-w-7xl mx-auto">
@@ -38,7 +39,6 @@ function Navbar() {
           />
         </Link>
 
-        {/* --- DESKTOP MENU (SESUAI KODE ASLI) --- */}
         <div className="font-poppins hidden md:flex flex-row gap-20 items-center text-yellow text-xl font-medium md:text-2xl">
           {navItems.map((item) => (
             <div key={item.href} className="relative group">
@@ -46,6 +46,13 @@ function Navbar() {
               <NavHoverEffect />
             </div>
           ))}
+
+          {isAuthenticated && (
+            <div className="relative group">
+              <Link href="/choose">Vote</Link>
+              <NavHoverEffect />
+            </div>
+          )}
 
           <div className="relative">
             <div className="relative group">
@@ -77,19 +84,6 @@ function Navbar() {
           </div>
 
           {isLoading ? (
-            <div className="w-32 h-10 bg-yellow/20 rounded-md animate-pulse" />
-          ) : (
-            <div
-              className={`${
-                isAuthenticated ? "block" : "hidden"
-              } relative group`}
-            >
-              <Link href="/choose">Vote</Link>
-              <NavHoverEffect />
-            </div>
-          )}
-
-          {isLoading ? (
             <div className="w-20 h-8 bg-yellow/20 rounded-md animate-pulse" />
           ) : isAuthenticated ? (
             <div className="relative group">
@@ -111,35 +105,7 @@ function Navbar() {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-yellow focus:outline-none"
           >
-            {isMenuOpen ? (
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16m-7 6h7"
-                />
-              </svg>
-            )}
+            {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
       </div>
@@ -149,7 +115,7 @@ function Navbar() {
           className="md:hidden bg-pink font-poppins text-yellow text-center h-screen flex flex-col justify-center items-center"
           style={{ boxShadow: "0 18px 20px rgba(0, 0, 0, 0.25)" }}
         >
-          <ul className="flex flex-col items-center justify-center gap-16 py-8 -translate-y-[60px]">
+          <ul className="flex flex-col items-center justify-center gap-12 py-8 -translate-y-[60px]">
             {navItems.map((item) => (
               <li key={item.href} className="text-4xl font-medium">
                 <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
@@ -157,6 +123,17 @@ function Navbar() {
                 </Link>
               </li>
             ))}
+
+            {isAuthenticated && (
+              <li className="text-4xl font-medium">
+                <Link
+                  href="/choose"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Vote
+                </Link>
+              </li>
+            )}
 
             <li className="text-4xl font-medium">
               <button
@@ -190,20 +167,6 @@ function Navbar() {
                     ))}
                   </div>
                 </div>
-              )}
-            </li>
-
-            <li
-              className={`${
-                isAuthenticated ? "block" : "hidden"
-              } text-4xl font-medium`}
-            >
-              {isLoading ? (
-                <div className="w-32 h-10 bg-yellow/20 rounded-md animate-pulse" />
-              ) : (
-                <Link href="/login" onClick={() => setIsMenuOpen(false)}>
-                  Vote
-                </Link>
               )}
             </li>
 

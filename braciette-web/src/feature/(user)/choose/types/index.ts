@@ -1,5 +1,6 @@
-export type VoteCategory = {
-  short: string;
-  full: string;
-  color: 'pink' | 'green';
-};
+export interface VoteCategory {
+  id: string;
+  name: string;
+  longName: string;
+  color: 'pink | green';
+}
