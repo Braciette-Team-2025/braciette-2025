@@ -26,7 +26,7 @@ function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 bg-pink"
+      className="sticky top-0 z-100 bg-pink"
       style={{ boxShadow: "0 4px 10px rgba(0, 0, 0, 0.25)" }}
     >
       <div className="flex flex-row justify-between items-center p-4 max-w-7xl mx-auto">
@@ -126,10 +126,7 @@ function Navbar() {
 
             {isAuthenticated && (
               <li className="text-4xl font-medium">
-                <Link
-                  href="/choose"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href="/choose" onClick={() => setIsMenuOpen(false)}>
                   Vote
                 </Link>
               </li>
