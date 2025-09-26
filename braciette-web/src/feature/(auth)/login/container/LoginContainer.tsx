@@ -36,26 +36,18 @@ const LoginContainer = () => {
         variants={leafVariants}
         initial="hidden"
         animate="visible"
-        className="absolute -bottom-1 -left-28 w-[220px] h-[220px]"
+        className="absolute -bottom-1 -left-18 md:-left-28 transform rotate-180 w-[17dvh] h-[17dvh] md:w-[220px] md:h-[220px]"
       >
-        <Image
-          src="/login/leaf-green.svg"
-          alt="Leaf Decoration"
-          fill
-        />
+        <Image src="/login/leaf-green.svg" alt="Leaf Decoration" fill />
       </motion.div>
 
       <motion.div
         variants={leafVariants}
         initial="hidden"
         animate="visible"
-        className="absolute -top-1 -right-28 transform rotate-180 w-[220px] h-[220px]"
+        className="absolute -top-1 -right-18 md:-right-28 transform rotate-180 w-[17dvh] h-[17dvh] md:w-[220px] md:h-[220px]"
       >
-        <Image
-          src="/login/leaf-green.svg"
-          alt="Leaf Decoration"
-          fill
-        />
+        <Image src="/login/leaf-green.svg" alt="Leaf Decoration" fill />
       </motion.div>
 
       <Image
