@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Jersey_10, Poppins } from "next/font/google";
 import localFont from "next/font/local";
+import { AuthProvider } from "@/shared/context/AuthContext";
+import { ToastProvider } from "@/shared/context/ToastContext";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -9,9 +11,10 @@ const poppins = Poppins({
   subsets: ["latin"],
 });
 
-const retro = localFont({
-  src: "../../public/fonts/retro.ttf",
+const retro = Jersey_10({
   variable: "--font-retro",
+  weight: ["400"],
+  subsets: ["latin"],
 });
 
 const yourmate = localFont({
@@ -22,6 +25,9 @@ const yourmate = localFont({
 export const metadata: Metadata = {
   title: "Braciate 2025",
   description: "Brawijaya Appreciate Website",
+  icons: {
+    icon: "/logobraciette.svg",
+  },
 };
 
 export default function RootLayout({
@@ -30,11 +36,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html data-scroll-behavior="smooth" lang="en" className="scroll-smooth">
       <body
-        className={`${poppins.variable} ${retro.variable} ${yourmate.variable}`}
+        className={`${poppins.variable} ${retro.variable} ${yourmate.variable} bg-yellow`}
       >
-        {children}
+        <ToastProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ToastProvider>
       </body>
     </html>
   );

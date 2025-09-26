@@ -1,0 +1,103 @@
+.spin {
+  animation: rotateFlower 30s linear infinite, scaleUp 0.3s ease-out forwards;
+}
+
+@keyframes rotateFlower {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    scale: 0%;
+  }
+  90% {
+    scale: 110%;
+  }
+  100% {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+
+.slideFadeIn {
+  animation: slide-fade-in 0.5s ease-out forwards;
+}
+
+@keyframes slide-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
+
+.slideFadeInDown {
+  animation: slide-fade-in-down 0.5s ease-out forwards;
+}
+
+@keyframes slide-fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
+
+.slideFadeInLeft {
+  animation: slide-fade-in-left 0.5s ease-out forwards;
+}
+
+@keyframes slide-fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+
+.slideFadeInRight {
+  animation: slide-fade-in-right 0.5s ease-out forwards;
+}
+
+@keyframes slide-fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
+  }
+}
+
+.moveUp {
+  animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(100px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

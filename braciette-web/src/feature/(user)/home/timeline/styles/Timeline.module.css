@@ -1,0 +1,159 @@
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 100px auto;
+}
+
+.container {
+  padding: 10px 50px;
+  position: relative;
+  width: 50%;
+  opacity: 0;
+  animation: movedown 1s linear forwards;
+  animation-timeline: view();
+  animation-range-start: cover;
+  animation-range-end: 400px;
+}
+
+@keyframes movedown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.container:nth-child(1) {
+  animation-delay: 0s;
+}
+.container:nth-child(2) {
+  animation-delay: 1s;
+}
+.container:nth-child(3) {
+  animation-delay: 2s;
+}
+.container:nth-child(4) {
+  animation-delay: 3s;
+}
+
+.textBox {
+  padding: 20px 30px;
+  background: var(--yellow);
+  position: relative;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.leftContainer {
+  left: 0%;
+}
+
+.rightContainer {
+  left: 50%;
+}
+
+.balls {
+  position: absolute;
+  right: -25px;
+  top: 32px;
+  z-index: 10;
+}
+
+.rightContainer .balls {
+  left: -25px;
+}
+
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background: var(--yellow);
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: -1;
+  animation: moveline 6s linear forwards;
+  animation-timeline: view();
+  animation-range-start: cover;
+  animation-range-end: 1200px;
+}
+
+@keyframes moveline {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+.leftArrow {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 34px;
+  z-index: 1;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid var(--yellow);
+  right: -15px;
+}
+
+.rightArrow {
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 34px;
+  z-index: 1;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid var(--yellow);
+  left: -15px;
+}
+
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .container {
+    width: 60%;
+  }
+
+  .leftContainer {
+    left: -10%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .timeline {
+    margin: 50px auto;
+  }
+  .timeline::after {
+    left: 11px;
+  }
+  .container {
+    width: 100%;
+    padding-left: 80px;
+    padding-right: 25px;
+  }
+  .text-box {
+    font-size: 13px;
+  }
+  .rightContainer {
+    left: 0;
+  }
+  .rightContainer .balls,
+  .balls {
+    left: -15px;
+  }
+  .leftArrow,
+  .rightArrow {
+    border-right: 15px solid var(--yellow);
+    border-left: 0px;
+    left: -15px;
+  }
+  .timeline::after {
+    animation-range-end: 1800px;
+  }
+}
