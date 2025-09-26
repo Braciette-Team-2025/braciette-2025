@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/shared/context/AuthContext";
-import { Loader2 } from "lucide-react";
+import { useToast } from "@/shared/hooks/useToast";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -15,6 +15,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { showToast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,11 +24,22 @@ const LoginForm = () => {
 
     try {
       await login({ id, password });
-      router.push("/choose");
+      showToast({
+        type: "success",
+        title: "Login Berhasil!",
+        message: "Anda akan diarahkan ke halaman utama.",
+      });
+
+      setTimeout(() => {
+        router.push("/choose");
+      }, 1500);
     } catch (err) {
-      setError("Login gagal. Periksa kembali ID dan password Anda.");
+      showToast({
+        type: "error",
+        title: "Login Gagal",
+        message: "Periksa kembali ID dan password Anda.",
+      });
       console.error(err);
-    } finally {
       setIsLoading(false);
     }
   };

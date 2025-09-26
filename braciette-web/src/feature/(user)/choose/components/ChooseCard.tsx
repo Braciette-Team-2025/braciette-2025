@@ -1,17 +1,18 @@
 import { VoteCategory } from "../types";
 
-const colorVariants = {
-  pink: "bg-pink hover:bg-pink-600",
-  green: "bg-green hover:bg-green-600",
+const colorVariants: Record<'pink' | 'green', string> = {
+  pink: 'bg-pink hover:bg-pink-600',
+  green: 'bg-green hover:bg-green-600',
 };
 
 interface ChooseCardProps {
   category: VoteCategory;
   onClick: () => void;
+  color: 'pink' | 'green';
 }
 
-function ChooseCard({ category, onClick }: ChooseCardProps) {
-  const { short, full, color } = category;
+function ChooseCard({ category, onClick, color }: ChooseCardProps) {
+  const { name, longName} = category; 
 
   return (
     <div
@@ -27,13 +28,13 @@ function ChooseCard({ category, onClick }: ChooseCardProps) {
         className="font-poppins font-bold"
         style={{ fontSize: "clamp(1.5rem, 2vw + 1rem, 3rem)" }}
       >
-        {short}
+        {name}
       </h1>
       <h2
         className="font-poppins font-medium"
         style={{ fontSize: "clamp(0.8rem, 0.5vw + 0.5rem, 1.25rem)" }}
       >
-        {full}
+        {longName}
       </h2>
     </div>
   );
