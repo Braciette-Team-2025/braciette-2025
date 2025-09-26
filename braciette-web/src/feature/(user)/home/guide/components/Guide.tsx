@@ -25,7 +25,7 @@ function Guide() {
           </div>
         </div>
         <div className="relative flex flex-col text-center gap-0">
-          <div className="absolute -rotate-12 md:rotate-0 top-[8dvh] md:-top-[7dvh] lg:-top-[6dvh] left-0 md:left-auto md:-right-[4dvw] z-10">
+          <div className="hidden md:block absolute -rotate-12 md:rotate-0 top-[8dvh] md:-top-[7dvh] lg:-top-[6dvh] left-0 md:left-auto md:-right-[4dvw] z-10">
             <div className="relative w-[8dvw] h-[6dvh] md:w-[5dvw] md:h-[16dvh]">
               <Image
                 src="/landing-page/star.svg"
@@ -35,7 +35,7 @@ function Guide() {
               />
             </div>
           </div>
-          <div className="absolute rotate-12 md:rotate-0 top-[8dvh] md:top-0 lg:top-[3dvh] xl:top-[6dvh] right-0 md:-right-[5dvw] z-10">
+          <div className="hidden md:block absolute rotate-12 md:rotate-0 top-[8dvh] md:top-0 lg:top-[3dvh] xl:top-[6dvh] right-0 md:-right-[5dvw] z-10">
             <div className="relative w-[8dvw] h-[6dvh] md:w-[3dvw] md:h-[10dvh]">
               <Image
                 src="/landing-page/star.svg"

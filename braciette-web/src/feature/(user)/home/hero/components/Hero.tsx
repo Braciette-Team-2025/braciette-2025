@@ -1,5 +1,5 @@
 import Image from "next/image";
-import animate from "../../styles/Animation.module.css";
+import animate from "@/shared/styles/Animation.module.css";
 
 function Hero() {
   return (
@@ -79,7 +79,7 @@ function Hero() {
         />
       </div>
       <div
-        className={`absolute w-[40dvw] -right-[25%] sm:w-[30dvw] sm:-right-[18%] lg:w-[10dvw] lg:-right-[6%] top-160 lg:top-50 ${animate.spin}`}
+        className={`absolute w-[40dvw] -right-[25%] sm:w-[30dvw] sm:-right-[18%] lg:w-[10dvw] lg:-right-[6%] top-[65dvh] lg:top-50 ${animate.spin}`}
       >
         <Image
           src="/landing-page/flower.svg"

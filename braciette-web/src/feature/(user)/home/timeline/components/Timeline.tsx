@@ -1,6 +1,6 @@
 import Image from "next/image";
 import style from "../styles/Timeline.module.css";
-import animate from "../../styles/Animation.module.css";
+import animate from "@/shared/styles/Animation.module.css";
 import { TimelineData } from "../data/timeline_data";
 
 function Timeline() {
