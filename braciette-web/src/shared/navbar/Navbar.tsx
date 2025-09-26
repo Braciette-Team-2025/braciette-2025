@@ -26,7 +26,7 @@ function Navbar() {
 
   return (
     <nav
-      className="sticky top-0 z-50 bg-pink"
+      className="sticky top-0 z-100 bg-pink"
       style={{ boxShadow: "0 4px 10px rgba(0, 0, 0, 0.25)" }}
     >
       <div className="flex flex-row justify-between items-center p-4 max-w-7xl mx-auto">
@@ -126,10 +126,7 @@ function Navbar() {
 
             {isAuthenticated && (
               <li className="text-4xl font-medium">
-                <Link
-                  href="/choose"
-                  onClick={() => setIsMenuOpen(false)}
-                >
+                <Link href="/choose" onClick={() => setIsMenuOpen(false)}>
                   Vote
                 </Link>
               </li>
@@ -142,16 +139,30 @@ function Navbar() {
                 Rank
               </button>
               {isRankDropdownOpen && (
-                <div className="flex flex-col gap-4 text-2xl mt-4">
-                  {rankDropdownLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                <div className="flex justify-center items-center gap-4 text-2xl mt-8">
+                  <div className="flex flex-col gap-4 w-35">
+                    {rankDropdownLinks.slice(0, 2).map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col gap-4 w-35">
+                    {rankDropdownLinks.slice(2, 4).map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </li>
