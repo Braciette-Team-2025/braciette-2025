@@ -165,16 +165,30 @@ function Navbar() {
                 Rank
               </button>
               {isRankDropdownOpen && (
-                <div className="flex flex-col gap-4 text-2xl mt-4">
-                  {rankDropdownLinks.map((link) => (
-                    <Link
-                      key={link.href}
-                      href={link.href}
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  ))}
+                <div className="flex justify-center items-center gap-4 text-2xl mt-8">
+                  <div className="flex flex-col gap-4 w-35">
+                    {rankDropdownLinks.slice(0, 2).map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+
+                  <div className="flex flex-col gap-4 w-35">
+                    {rankDropdownLinks.slice(2, 4).map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </li>
