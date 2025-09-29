@@ -4,12 +4,13 @@ export type OrgCategory = {
     link: string;
 }
 
-type ChartItem = {
+export type ChartItem = {
   id: number;
+  label: string;
   value: number;
 };
 
-type VoteItem = {
+export type VoteItem = {
   totalVotes: number;
 };
 
@@ -18,7 +19,7 @@ export type VoteProps = {
   voteInfo: VoteItem;
 };
 
-type Nomination = {
+export type Nomination = {
     id: number;
     name: string;
 };
