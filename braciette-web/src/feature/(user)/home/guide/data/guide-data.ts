@@ -2,12 +2,12 @@ import { Guide } from "../../types";
 
 export const GuideData: Guide[] = [
     {
-        step: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        step: "1. Login Menggunakan Akun Universitas Brawijaya (UB).",
     },
     {
-        step: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        step: "2. Pilih LKM yang akan anda vote",
     },
     {
-        step: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        step: "3. Vote BEM/DPM/HIMA/UKM pilihan anda",
     },
 ]
