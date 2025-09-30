@@ -55,7 +55,12 @@ export const useVotingPage = (categorySlug: string) => {
     mutationFn: (payload: SubmitVotePayload) =>
       votingService.submitVote(payload),
     onSuccess: () => {
-      console.log("Vote berhasil dicatat!");
+
+      showToast({
+        type: "success",
+        title: "Vote Berhasil!",
+        message: "Terima kasih atas partisipasi Anda.",
+      });
       setIsSuccess(true);
       setHasVoted(true);
     },
