@@ -60,7 +60,7 @@ function Guide() {
         </div>
         <div className="hidden md:block relative w-[11dvw] h-[15dvh] -translate-x-[6dvw]">
           <Image
-            src="/landing-page/logo-alternate.svg"
+            src="/landing-page/braciate-logo.png"
             alt="Guide"
             fill={true}
             objectFit="contain"

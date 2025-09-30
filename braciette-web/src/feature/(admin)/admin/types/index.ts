@@ -1,28 +1,25 @@
-export type OrgCategory = {
-    id: number;
-    name: string;
-    link: string;
-}
-
 export type ChartItem = {
-  id: number;
+  id: string;
   label: string;
   value: number;
+  logoUrl: string;
 };
 
-export type VoteItem = {
+export type VoteInfo = {
   totalVotes: number;
 };
 
-export type VoteProps = {
+export type VoteAdminProps = {
   data: ChartItem[];
-  voteInfo: VoteItem;
+  voteInfo: VoteInfo;
 };
 
 export type Nomination = {
-    id: number;
-    name: string;
+  id: string;
+  name: string;
 };
-export type NominationProps = {
-    nominations: Nomination[];
+
+export type NominationAdminProps = {
+  nominations: Nomination[];
+  onDeleteNomination: (nominationId: string) => void;
 };

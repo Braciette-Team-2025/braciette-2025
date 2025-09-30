@@ -1,41 +1,48 @@
 "use client";
-import { useState } from "react";
-import { CreateNominationPayload } from "../types/admin";
+import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { adminService } from "@/api/services/admin/admin";
+import { UpdateNominationPayload } from "../types/admin";
 import { Loader2 } from "lucide-react";
 
-type AddNomineeProps = {
-  categoryId: string;
+type EditNomineeProps = {
+  nominationId: string;
   onSubmit: (
-    payload: CreateNominationPayload,
+    payload: UpdateNominationPayload,
     options: { onSuccess: () => void }
   ) => void;
   isLoading: boolean;
   onCancel: () => void;
 };
 
-function AddNominee({
-  categoryId,
+function EditNominee({
+  nominationId,
   onSubmit,
   isLoading,
   onCancel,
-}: AddNomineeProps) {
+}: EditNomineeProps) {
   const [name, setName] = useState("");
   const [longName, setLongName] = useState("");
   const [logoUrl, setLogoUrl] = useState("");
 
+  const { data: nominationDetail, isLoading: isLoadingDetail } = useQuery({
+    queryKey: ["nominationDetail", nominationId],
+    queryFn: () => adminService.getNominationDetail(nominationId),
+    enabled: !!nominationId,
+  });
+
+  useEffect(() => {
+    const data = nominationDetail?.data;
+    if (data) {
+      setName(data.name);
+      setLongName(data.longName || "");
+      setLogoUrl(data.logoUrl);
+    }
+  }, [nominationDetail]);
+
   function handleSubmit(event: React.FormEvent) {
     event.preventDefault();
-    if (!categoryId) {
-      alert("Kategori tidak valid!");
-      return;
-    }
-    const payload: CreateNominationPayload = {
-      name,
-      longName,
-      logoUrl,
-      categoryId,
-    };
-
+    const payload: UpdateNominationPayload = { name, longName, logoUrl };
     onSubmit(payload, {
       onSuccess: () => {
         onCancel();
@@ -43,10 +50,14 @@ function AddNominee({
     });
   }
 
+  if (isLoadingDetail) {
+    return <div>Loading form...</div>;
+  }
+
   return (
     <>
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold font-poppins">Tambah Nominasi</h1>
+        <h1 className="text-2xl font-bold font-poppins">Edit Nominasi</h1>
         <button onClick={onCancel} className="text-lg hover:text-red-500">
           Batal
         </button>
@@ -89,10 +100,10 @@ function AddNominee({
           disabled={isLoading}
           className="bg-white text-blue w-max p-2 px-6 rounded-lg self-center font-bold hover:scale-105 transition-all duration-150 cursor-pointer disabled:opacity-50 disabled:cursor-wait"
         >
-          {isLoading ? <Loader2 className="animate-spin" /> : "Simpan"}
+          {isLoading ? <Loader2 className="animate-spin" /> : "Update"}
         </button>
       </form>
     </>
   );
 }
-export default AddNominee;
+export default EditNominee;

@@ -43,3 +43,5 @@ next-env.d.ts
 **/.DS_Store
 .DS_Store
 /.gemini-clipboard/
+**.GEMINI.md
+**.CLAUDE.md
