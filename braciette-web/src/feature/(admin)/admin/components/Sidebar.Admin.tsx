@@ -6,7 +6,7 @@ import { useState } from "react";
 import { LuPanelLeftOpen } from "react-icons/lu";
 
 function AdminSidebar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   return isOpen ? (
     <div className="bg-white h-screen flex-[1] fixed lg:sticky top-0 left-0">
       <div className="relative w-full h-full flex flex-col justify-between items-center bg-dark-blue text-white font-poppins text-[20px] text-center font-semibold">
