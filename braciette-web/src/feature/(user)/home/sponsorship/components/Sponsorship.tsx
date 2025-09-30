@@ -50,8 +50,8 @@ function Sponsorship() {
                 className="w-[30dvw] h-[30dvw] lg:w-[200px] lg:h-[200px] bg-white rounded-2xl border-2 border-black"
               >
                 <Image
-                  src="/landing-page/org-placeholder.svg"
-                  alt="Organization"
+                  src="/placeholder-questions.jpeg"
+                  alt="Sponsorship"
                   width={100}
                   height={100}
                   className="w-full h-auto p-6"

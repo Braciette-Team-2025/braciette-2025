@@ -23,12 +23,11 @@ function About() {
             className="font-poppins font-medium text-white text-justify lg:text-justify md:text-center lg:pr-12"
             style={{ fontSize: "clamp(16px, 0.3vw + 1rem, 36px)" }}
           >
-            Brawijaya Appreciate merupakan program kerja yang diselenggarakan
-            Kementerian Dalam Negeri EM UB 2024 yang Bertujuan untuk
-            meningkatkan keharmonisan antar lembaga-lembaga di Universitas
-            Brawijaya. Brawijaya Appreciate terdiri atas tiga rangkaian kegiatan
-            yaitu pre-event, main-event, dan post-event. Acara puncak akan diisi
-            oleh penampilan UKM yang ada di Universitas Brawijaya.
+            Brawijaya Appreciate merupakan program kerja dari Kementerian Dalam
+            Negeri Eksekutif Mahasiswa Universitas Brawijaya yang berbentuk
+            malam penghargaan dengan tujuan sebagai bentuk kolaborasi,
+            harmonisasi, dan apresiasi untuk simpul Brawijaya, yaitu BEM, DPM,
+            HIMA, dan UKM.
           </p>
         </div>
         <div className="hidden h-[400px] lg:translate-x-40 2xl:translate-x-0 relative lg:flex justify-center items-center">
