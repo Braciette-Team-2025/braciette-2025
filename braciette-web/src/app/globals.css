@@ -11,6 +11,7 @@
   --red: #d20001;
   --dark-blue: #00003d;
   --blue: #0212ee;
+  --gray: #d9d9d9;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -55,6 +56,7 @@
   --color-dark-blue: var(--dark-blue);
   --color-blue: var(--blue);
   --color-red: var(--red);
+  --color-gray: var(--gray);
   --font-retro: var(--font-retro);
   --font-yourmate: var(--font-yourmate);
   --font-poppins: var(--font-poppins);
