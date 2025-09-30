@@ -11,11 +11,11 @@ import { useToast } from "@/shared/hooks/useToast";
 const LoginForm = () => {
   const router = useRouter();
   const { login } = useAuth();
-  const [id, setId] = useState("");
+  const { showToast } = useToast();
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const { showToast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const LoginForm = () => {
     setError(null);
 
     try {
-      await login({ id, password });
+      const loggedInUser = await login({ identifier, password });
       showToast({
         type: "success",
         title: "Login Berhasil!",
@@ -31,13 +31,17 @@ const LoginForm = () => {
       });
 
       setTimeout(() => {
-        router.push("/choose");
+        if (loggedInUser?.role === "admin") {
+          router.push("/admin");
+        } else {
+          router.push("/choose");
+        }
       }, 1500);
     } catch (err) {
       showToast({
         type: "error",
         title: "Login Gagal",
-        message: "Periksa kembali ID dan password Anda.",
+        message: "Periksa kembali NIM / Email UB dan password Anda.",
       });
       console.error(err);
       setIsLoading(false);
@@ -51,15 +55,18 @@ const LoginForm = () => {
     >
       <div className="w-full flex flex-col gap-5">
         <div className="grid w-full items-center gap-2.5">
-          <Label htmlFor="id" className="text-black font-bold text-base">
-            Email UB
+          <Label
+            htmlFor="identifier"
+            className="text-black font-bold text-base"
+          >
+            NIM atau Email UB
           </Label>
           <Input
-            id="id"
+            id="identifier"
             type="text"
-            placeholder="Masukkan email UB..."
-            value={id}
-            onChange={(e) => setId(e.target.value)}
+            placeholder="Masukkan email UB atau NIM ...."
+            value={identifier}
+            onChange={(e) => setIdentifier(e.target.value)}
             required
             className="bg-white rounded-[12px] h-12 text-base focus-visible:ring-blue-500 focus-visible:ring-offset-2"
           />

@@ -1,15 +1,17 @@
-import { apiClient } from '@/api/core/AxiosInstance';
-import { jwtDecode } from 'jwt-decode';
+import { apiClient } from "@/api/core/AxiosInstance";
+import { jwtDecode } from "jwt-decode";
 
 export interface LoginCredentials {
-  id: string;
+  identifier: string;
   password: string;
 }
 
 export interface UserProfile {
-  nim: string;
-  fullname: string;
-  faculty: string;
+  id: string;
+  name: string;
+  role: "admin" | "user";
+  fullname?: string;
+  faculty?: string;
 }
 
 interface LoginResponse {
@@ -18,7 +20,10 @@ interface LoginResponse {
 
 class AuthService {
   async login(credentials: LoginCredentials) {
-    const response = await apiClient.post<LoginResponse>('/auth/login', credentials);
+    const response = await apiClient.post<LoginResponse>(
+      "/auth/login",
+      credentials
+    );
     const token = response.data.token;
 
     if (token) {
@@ -29,7 +34,7 @@ class AuthService {
 
   logout() {
     this.removeAuthCookie();
-    window.location.href = '/login';
+    window.location.href = "/login";
   }
 
   getUserFromCookie(): UserProfile | null {
@@ -38,10 +43,28 @@ class AuthService {
       return null;
     }
     try {
-      const decoded: UserProfile = jwtDecode(token);
-      return decoded;
+      // Decode token tanpa asumsi struktur (sebagai unknown/any)
+      const rawPayload: any = jwtDecode(token);
+
+      // Cek apakah ini token admin (berdasarkan field 'type')
+      if (rawPayload.type === "ADMIN") {
+        const adminProfile: UserProfile = {
+          id: rawPayload.adminId,
+          name: rawPayload.username,
+          role: "admin",
+        };
+        return adminProfile;
+      }
+
+      // Jika bukan admin, kita anggap itu user biasa
+      const userProfile: UserProfile = {
+        id: rawPayload.nim,
+        name: rawPayload.fullname,
+        role: "user", // Kita tetapkan role 'user' di sini
+      };
+      return userProfile;
     } catch (error) {
-      console.error("Failed to decode token:", error);
+      console.error("Failed to decode or translate token:", error);
       this.removeAuthCookie();
       return null;
     }
@@ -60,7 +83,8 @@ class AuthService {
   }
 
   private removeAuthCookie() {
-    document.cookie = 'auth_session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict';
+    document.cookie =
+      "auth_session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; SameSite=Strict";
   }
 }
 
