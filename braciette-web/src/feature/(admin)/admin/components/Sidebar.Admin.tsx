@@ -8,11 +8,11 @@ import { LuPanelLeftOpen } from "react-icons/lu";
 function AdminSidebar() {
   const [isOpen, setIsOpen] = useState(true);
   return isOpen ? (
-    <div className="bg-white h-screen flex-[1] fixed lg:sticky top-0 left-0">
+    <div className="bg-white h-screen flex-[1] fixed 2xl:sticky top-0 left-0">
       <div className="relative w-[300px] h-full flex flex-col justify-between items-center bg-dark-blue text-white font-poppins text-[20px] text-center font-semibold">
         <button
           onClick={() => setIsOpen(false)}
-          className="lg:hidden absolute right-5 top-5 cursor-pointer"
+          className="2xl:hidden absolute right-5 top-5 cursor-pointer"
         >
           <FaX />
         </button>
@@ -36,7 +36,7 @@ function AdminSidebar() {
   ) : (
     <button
       onClick={() => setIsOpen(true)}
-      className="cursor-pointer bg-dark-blue text-white p-4 rounded-lg fixed top-5 left-5 z-50 lg:hidden opacity-30 shadow-2xl hover:opacity-100 transition-opacity duration-200"
+      className="cursor-pointer bg-dark-blue text-white p-4 rounded-lg fixed top-5 left-5 z-50 2xl:hidden opacity-30 shadow-2xl hover:opacity-100 transition-opacity duration-200"
     >
       <LuPanelLeftOpen />
     </button>

@@ -19,7 +19,7 @@ function NominationAdmin({ nominations }: NominationProps) {
   }
 
   return (
-    <section className="flex-[1] max-h-[50rem] xl:max-h-none bg-primary-blue rounded-2xl p-6 text-white flex flex-col gap-6 bg-blue font-poppins">
+    <section className="flex-[1] max-h-[50rem] 2xl:max-h-none bg-primary-blue rounded-2xl p-6 text-white flex flex-col gap-6 bg-blue font-poppins">
       {isAdding ? (
         <AddNominee redirectBack={setIsAdding} />
       ) : (
@@ -54,14 +54,14 @@ function NominationAdmin({ nominations }: NominationProps) {
                 <div className="flex gap-3 text-xs font-bold">
                   <a
                     href="#"
-                    className="text-black hover:underline flex items-center gap-2"
+                    className="text-black hover:underline flex items-center gap-2 text-[10px]"
                   >
                     EDIT
                     <FaPen />
                   </a>
                   <a
                     href="#"
-                    className="text-red hover:underline flex items-center gap-2"
+                    className="text-red hover:underline flex items-center gap-2 text-[10px]"
                   >
                     HAPUS
                     <FaTrash />
