@@ -6,7 +6,7 @@ import { VoteData } from "../data/vote-data";
 
 function AdminContainer() {
   return (
-    <div className="w-full min-h-screen xl:h-screen xl:max-h-screen bg-white flex">
+    <div className="w-full min-h-screen xl:h-screen xl:max-h-screen overflow-x-auto bg-white flex">
       <AdminSidebar />
       <main className="flex-grow p-12 flex flex-col xl:flex-row gap-6">
         <section className="flex-[2] flex flex-col gap-12">
