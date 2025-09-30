@@ -56,7 +56,7 @@ function About() {
                 </div>
                 <div className="relative w-full h-full rounded-b-[12px] overflow-hidden">
                   <Image
-                    src="/landing-page/card-placeholder.png"
+                    src="/landing-page/about-pic-1.jpg"
                     alt="About Mascot"
                     fill={true}
                     objectFit="cover"
@@ -83,7 +83,7 @@ function About() {
                 </div>
                 <div className="relative w-full h-full rounded-b-[12px] overflow-hidden">
                   <Image
-                    src="/landing-page/card-placeholder.png"
+                    src="/landing-page/about-pic-2.jpg"
                     alt="About Mascot"
                     fill={true}
                     objectFit="cover"
@@ -108,13 +108,12 @@ function About() {
                     height={40}
                   />
                 </div>
-                <div className="relative w-full rounded-b-[12px] overflow-hidden flex justify-center">
+                <div className="relative w-full h-full rounded-b-[12px] overflow-hidden">
                   <Image
-                    src="/landing-page/card-placeholder.png"
+                    src="/landing-page/about-pic-3.jpg"
                     alt="About Mascot"
-                    width={100}
-                    height={100}
-                    className="w-full h-auto"
+                    fill={true}
+                    objectFit="cover"
                   />
                 </div>
               </div>

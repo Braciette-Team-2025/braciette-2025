@@ -32,7 +32,7 @@ function Navbar() {
       <div className="flex flex-row justify-between items-center p-4 max-w-7xl mx-auto">
         <Link href="/" className="w-[60px] h-[60px] md:w-[70px] md:h-[70px]">
           <Image
-            src="/landing-page/logo.svg"
+            src="/landing-page/braciate-logo.png"
             alt="Braciate Logo"
             width={70}
             height={70}

@@ -30,7 +30,7 @@ function Hero() {
               className={`hidden md:block absolute w-[8dvw] -bottom-[12%] left-[2%] ${animate.slideFadeInLeft}`}
             >
               <Image
-                src="/landing-page/logo.svg"
+                src="/landing-page/braciate-logo.png"
                 alt="Braciate Logo"
                 width={100}
                 height={100}
@@ -51,7 +51,7 @@ function Hero() {
               className={`w-[12dvw] h-[10dvh] xl:h-[15dvh] relative md:translate-y-2 md:translate-x-10 lg:translate-y-4 xl:translate-y-2 lg:-translate-x-3 xl:-translate-x-12 ${animate.slideFadeInDown}`}
             >
               <Image
-                src="/landing-page/logo.svg"
+                src="/landing-page/braciate-logo.png"
                 alt="Braciate Logo"
                 fill={true}
                 objectFit="contain"

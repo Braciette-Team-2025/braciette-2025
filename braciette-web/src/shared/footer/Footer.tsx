@@ -31,7 +31,7 @@ export const Footer = () => {
           <div className="flex items-center justify-between md:justify-start w-full gap-4 md:gap-8">
             <div className="w-[14dvw] md:w-[10dvw]">
               <Image
-                src="/logobraciette.svg"
+                src="/landing-page/braciate-logo.png"
                 alt="Brawijaya Appreciate Logo"
                 width={230}
                 height={230}
