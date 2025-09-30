@@ -9,7 +9,7 @@ function AdminSidebar() {
   const [isOpen, setIsOpen] = useState(true);
   return isOpen ? (
     <div className="bg-white h-screen flex-[1] fixed 2xl:sticky top-0 left-0">
-      <div className="relative w-[300px] h-full flex flex-col justify-between items-center bg-dark-blue text-white font-poppins text-[20px] text-center font-semibold">
+      <div className="relative w-full h-full flex flex-col justify-between items-center bg-dark-blue text-white font-poppins text-[20px] text-center font-semibold">
         <button
           onClick={() => setIsOpen(false)}
           className="2xl:hidden absolute right-5 top-5 cursor-pointer"
