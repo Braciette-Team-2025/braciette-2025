@@ -8,7 +8,7 @@ interface AuthContextType {
   user: UserProfile | null;
   isAuthenticated: boolean;
   isLoading: boolean;
-  login: (credentials: LoginCredentials) => Promise<void>;
+  login: (credentials: LoginCredentials) => Promise<UserProfile | null>;
   logout: () => void;
 }
 
@@ -36,10 +36,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   }, []);
 
-  const login = async (credentials: LoginCredentials) => {
+  const login = async (credentials: LoginCredentials): Promise<UserProfile | null> => {
     await authService.login(credentials);
     const loggedInUser = authService.getUserFromCookie();
     setUser(loggedInUser);
+    return loggedInUser;
   };
 
   const logout = () => {
