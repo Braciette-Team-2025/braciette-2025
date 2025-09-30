@@ -1,21 +1,56 @@
+"use client";
 import NominationAdmin from "../components/Nomination.Admin";
 import AdminSidebar from "../components/Sidebar.Admin";
 import VoteAdmin from "../components/Vote.Admin";
-import { Nominations } from "../data/nomination-data";
-import { VoteData } from "../data/vote-data";
+import { useAdminDashboard } from "../hooks/useAdminDashboard";
 
 function AdminContainer() {
+  const {
+    isLoading,
+    categories,
+    selectedCategoryId,
+    onSelectCategory,
+    voteData,
+    nominationData,
+    totalVotes,
+    deleteNomination,
+    createNomination,
+    isCreatingNomination,
+    updateNomination,
+    isUpdatingNomination,
+  } = useAdminDashboard();
+
+  if (isLoading) {
+    return (
+      <div className="w-full min-h-screen flex items-center justify-center">
+        Loading Dashboard...
+      </div>
+    );
+  }
+
   return (
-    <div className="w-full min-h-screen 2xl:h-screen 2xl:max-h-screen overflow-x-auto bg-white flex">
-      <AdminSidebar />
-      <main className="flex-grow p-12 flex flex-col 2xl:flex-row gap-6">
-        <section className="flex-[2] flex flex-col gap-12">
-          <VoteAdmin data={VoteData.data} voteInfo={VoteData.voteInfo} />
+    <div className="w-full h-screen max-h-screen overflow-hidden bg-white flex">
+      <AdminSidebar
+        categories={categories}
+        selectedCategoryId={selectedCategoryId}
+        onSelectCategory={onSelectCategory}
+      />
+      <main className="flex-1 p-6 md:p-12 flex flex-row gap-6 overflow-x-auto">
+        <section className="w-[500px] flex-shrink-0">
+          <VoteAdmin data={voteData} voteInfo={{ totalVotes }} />
         </section>
-        <NominationAdmin nominations={Nominations.nominations} />
+
+        <NominationAdmin
+          nominations={nominationData}
+          onDeleteNomination={deleteNomination}
+          onCreateNomination={createNomination}
+          isCreating={isCreatingNomination}
+          onUpdateNomination={updateNomination}
+          isUpdating={isUpdatingNomination}
+          selectedCategoryId={selectedCategoryId}
+        />
       </main>
     </div>
   );
 }
-
 export default AdminContainer;

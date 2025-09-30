@@ -79,12 +79,12 @@ export const useVotingPage = (categorySlug: string) => {
   };
 
   const handleSave = () => {
-    if (!selectedCandidate || !categoryId || !user?.nim) {
+    if (!selectedCandidate || !categoryId || !user?.id) {
       console.error("Data tidak lengkap untuk mengirim vote");
       return;
     }
     const payload: SubmitVotePayload = {
-      nim: user.nim,
+      nim: user.id,
       categoryId: categoryId,
       nominationId: selectedCandidate.id,
     };
