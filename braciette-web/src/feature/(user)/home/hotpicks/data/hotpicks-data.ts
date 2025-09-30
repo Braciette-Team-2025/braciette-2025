@@ -3,18 +3,18 @@ import { LKMCategory } from "../../types";
 export const HotpicksData: LKMCategory[] = [
   {
     name: "HIMPUNAN",
-    orgImage: "/landing-page/org-placeholder.svg",
+    orgImage: "/placeholder-questions.jpeg",
   },
   {
     name: "DPM",
-    orgImage: "/landing-page/org-placeholder.svg",
+    orgImage: "/placeholder-questions.jpeg",
   },
   {
     name: "BEM",
-    orgImage: "/landing-page/org-placeholder.svg",
+    orgImage: "/placeholder-questions.jpeg",
   },
   {
     name: "UKM",
-    orgImage: "/landing-page/org-placeholder.svg",
+    orgImage: "/placeholder-questions.jpeg",
   },
 ]
