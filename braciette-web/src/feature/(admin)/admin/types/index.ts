@@ -22,6 +22,7 @@ export type VoteProps = {
 export type Nomination = {
     id: number;
     name: string;
+    logo: string;
 };
 export type NominationProps = {
     nominations: Nomination[];

@@ -6,7 +6,8 @@ import { motion, AnimatePresence, Variants } from "framer-motion";
 import { CategorySwitcher } from "../components/CategorySwitcher";
 import { TopThreeDisplay } from "../components/TopThreeDisplay";
 import { LeaderboardList } from "../components/LeaderboardList";
-import { dummyData } from "../data/dummy";
+import { useRankings } from "../hooks/useRankings";
+import { findCategoryBySlug } from "../utils/dataTransform";
 import { AnimatedDiv } from "@/shared/ui/AnimatedDiv";
 
 const fadeVariants: Variants = {
@@ -32,34 +33,97 @@ export function RankContainer({
 }: {
   initialCategory?: string;
 }) {
+  const { categories, categoryMapping, loading, error, refetch } = useRankings();
+
   const findInitialIndex = (categorySlug?: string) => {
-    if (!categorySlug) return 0;
-    const index = dummyData.findIndex((cat) => cat.id === categorySlug);
+    if (!categorySlug || categories.length === 0) return 0;
+    
+    const categoryData = findCategoryBySlug(categoryMapping, categorySlug);
+    if (!categoryData) return 0;
+    
+    const index = categories.findIndex((cat) => cat.id === categoryData.id);
     return index !== -1 ? index : 0;
   };
 
-  const [categoryIndex, setCategoryIndex] = useState(() =>
-    findInitialIndex(initialCategory)
-  );
+  const [categoryIndex, setCategoryIndex] = useState(0);
 
   useEffect(() => {
-    if (initialCategory) {
+    if (categories.length > 0) {
       const newIndex = findInitialIndex(initialCategory);
       setCategoryIndex(newIndex);
     }
-  }, [initialCategory]);
+  }, [initialCategory, categories, categoryMapping]);
 
   const handleNextCategory = () => {
-    setCategoryIndex((prevIndex) => (prevIndex + 1) % dummyData.length);
+    setCategoryIndex((prevIndex) => (prevIndex + 1) % categories.length);
   };
 
   const handlePrevCategory = () => {
     setCategoryIndex(
-      (prevIndex) => (prevIndex - 1 + dummyData.length) % dummyData.length
+      (prevIndex) => (prevIndex - 1 + categories.length) % categories.length
     );
   };
 
-  const currentCategory = dummyData[categoryIndex];
+  if (loading) {
+    return (
+      <main className="relative min-h-screen w-full bg-dark-blue flex flex-col items-center justify-center py-20 px-4 overflow-hidden">
+        <Image
+          src="/landing-page/lines-white.svg"
+          alt="Grid Overlay"
+          layout="fill"
+          objectFit="cover"
+          className="z-0"
+        />
+        <div className="relative z-20 flex flex-col items-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mb-4"></div>
+          <p className="text-white text-lg">Loading rankings...</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="relative min-h-screen w-full bg-dark-blue flex flex-col items-center justify-center py-20 px-4 overflow-hidden">
+        <Image
+          src="/landing-page/lines-white.svg"
+          alt="Grid Overlay"
+          layout="fill"
+          objectFit="cover"
+          className="z-0"
+        />
+        <div className="relative z-20 flex flex-col items-center text-center">
+          <p className="text-white text-xl mb-4">Error loading rankings</p>
+          <p className="text-gray-300 mb-6">{error}</p>
+          <button 
+            onClick={refetch}
+            className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Try Again
+          </button>
+        </div>
+      </main>
+    );
+  }
+
+  if (categories.length === 0) {
+    return (
+      <main className="relative min-h-screen w-full bg-dark-blue flex flex-col items-center justify-center py-20 px-4 overflow-hidden">
+        <Image
+          src="/landing-page/lines-white.svg"
+          alt="Grid Overlay"
+          layout="fill"
+          objectFit="cover"
+          className="z-0"
+        />
+        <div className="relative z-20 flex flex-col items-center">
+          <p className="text-white text-xl">No rankings available</p>
+        </div>
+      </main>
+    );
+  }
+
+  const currentCategory = categories[categoryIndex];
   const topThree = currentCategory.leaderboard.filter((item) => item.rank <= 3);
   const others = currentCategory.leaderboard.filter((item) => item.rank > 3);
 
