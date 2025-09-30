@@ -6,7 +6,7 @@ import axios, {
 } from "axios";
 
 export interface ApiResponse<T> {
-  success: boolean;
+  status: string;
   message: string;
   data: T;
 }
@@ -58,7 +58,7 @@ class ApiCore {
       },
       (error) => {
         return Promise.reject(error);
-      },
+      }
     );
 
     this.client.interceptors.response.use(
@@ -70,20 +70,54 @@ class ApiCore {
           }
         }
         return Promise.reject(error);
-      },
+      }
     );
   }
 
-  public async get<T>(url: string, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
+  public async get<T>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
     const response = await this.client.get<ApiResponse<T>>(url, config);
     return response.data;
   }
 
-  public async post<T, D = unknown>(url: string, data?: D, config?: AxiosRequestConfig): Promise<ApiResponse<T>> {
+  public async post<T, D = unknown>(
+    url: string,
+    data?: D,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
     const response = await this.client.post<ApiResponse<T>>(url, data, config);
     return response.data;
   }
-  
+
+  // --- TAMBAHAN METHOD BARU ---
+
+  public async put<T, D = unknown>(
+    url: string,
+    data?: D,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
+    const response = await this.client.put<ApiResponse<T>>(url, data, config);
+    return response.data;
+  }
+
+  public async patch<T, D = unknown>(
+    url: string,
+    data?: D,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
+    const response = await this.client.patch<ApiResponse<T>>(url, data, config);
+    return response.data;
+  }
+
+  public async delete<T>(
+    url: string,
+    config?: AxiosRequestConfig
+  ): Promise<ApiResponse<T>> {
+    const response = await this.client.delete<ApiResponse<T>>(url, config);
+    return response.data;
+  }
 }
 
 export const apiClient = ApiCore.getInstance();

@@ -43,10 +43,8 @@ class AuthService {
       return null;
     }
     try {
-      // Decode token tanpa asumsi struktur (sebagai unknown/any)
       const rawPayload: any = jwtDecode(token);
 
-      // Cek apakah ini token admin (berdasarkan field 'type')
       if (rawPayload.type === "ADMIN") {
         const adminProfile: UserProfile = {
           id: rawPayload.adminId,
@@ -56,11 +54,10 @@ class AuthService {
         return adminProfile;
       }
 
-      // Jika bukan admin, kita anggap itu user biasa
       const userProfile: UserProfile = {
         id: rawPayload.nim,
         name: rawPayload.fullname,
-        role: "user", // Kita tetapkan role 'user' di sini
+        role: "user",
       };
       return userProfile;
     } catch (error) {
