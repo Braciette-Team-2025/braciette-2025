@@ -6,9 +6,9 @@ import { VoteData } from "../data/vote-data";
 
 function AdminContainer() {
   return (
-    <div className="w-full h-screen max-h-screen bg-white flex">
+    <div className="w-full min-h-screen 2xl:h-screen 2xl:max-h-screen overflow-x-auto bg-white flex">
       <AdminSidebar />
-      <main className="flex-grow p-12 flex gap-6">
+      <main className="flex-grow p-12 flex flex-col 2xl:flex-row gap-6">
         <section className="flex-[2] flex flex-col gap-12">
           <VoteAdmin data={VoteData.data} voteInfo={VoteData.voteInfo} />
         </section>

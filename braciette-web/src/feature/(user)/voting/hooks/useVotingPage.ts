@@ -55,6 +55,7 @@ export const useVotingPage = (categorySlug: string) => {
     mutationFn: (payload: SubmitVotePayload) =>
       votingService.submitVote(payload),
     onSuccess: () => {
+
       showToast({
         type: "success",
         title: "Vote Berhasil!",

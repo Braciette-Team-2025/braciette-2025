@@ -6,7 +6,7 @@ function VoteAdmin({ data, voteInfo }: VoteProps) {
   const sortedData = [...data].sort((a, b) => b.value - a.value); // comment this line to disable sorting
 
   return (
-    <div className="h-full flex flex-col gap-6 bg-blue p-6 rounded-2xl font-poppins text-black">
+    <div className="h-full max-h-[50rem] 2xl:max-h-none flex flex-col gap-6 bg-blue p-6 rounded-2xl font-poppins text-black">
       <h2 className="w-full h-max bg-white rounded-2xl p-6 flex justify-between items-center text-2xl font-bold">
         Total Voting
         <p className="flex items-center gap-4">
