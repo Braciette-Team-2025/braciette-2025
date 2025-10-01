@@ -1,9 +1,73 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import style from "../styles/Timeline.module.css";
 import animate from "@/shared/styles/Animation.module.css";
 import { TimelineData } from "../data/timeline_data";
 
+gsap.registerPlugin(ScrollTrigger);
+
 function Timeline() {
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const lineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!timelineRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Animate the timeline vertical line
+      if (lineRef.current) {
+        gsap.fromTo(
+          lineRef.current,
+          { height: 0 },
+          {
+            height: "100%",
+            duration: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: timelineRef.current,
+              start: "top center",
+              end: "bottom center",
+              scrub: 1,
+            },
+          }
+        );
+      }
+
+      // Animate each timeline container
+      containerRefs.current.forEach((container, index) => {
+        if (container) {
+          gsap.fromTo(
+            container,
+            {
+              opacity: 0,
+              y: -30,
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.8,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: container,
+                start: "top 80%",
+                end: "top 50%",
+                toggleActions: "play none none reverse",
+                scrub: 1,
+              },
+            }
+          );
+        }
+      });
+    }, timelineRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="relative flex flex-col justify-center items-center bg-blue">
       <div className="w-full h-full z-40 bg-blue flex flex-col justify-center items-center px-8 md:px-20 2xl:px-30 py-[20dvh]">
@@ -39,10 +103,12 @@ function Timeline() {
             </h2>
           </div>
         </div>
-        <div className={`${style.timeline}`}>
-          {TimelineData.map((timeline) => (
+        <div ref={timelineRef} className={`${style.timeline}`}>
+          <div ref={lineRef} className={style.timelineLine} />
+          {TimelineData.map((timeline, index) => (
             <div
               key={timeline.id}
+              ref={(el) => (containerRefs.current[index] = el)}
               className={`${style.container} ${
                 style[`${timeline.position}Container`]
               }`}
