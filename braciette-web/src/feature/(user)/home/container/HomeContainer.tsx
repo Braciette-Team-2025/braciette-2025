@@ -9,7 +9,7 @@ import Sponsorship from "../sponsorship/components/Sponsorship";
 
 export function HomeContainer() {
   return (
-    <main className="relative bg-dark-blue max-w-screen min-h-screen">
+    <main className="relative bg-dark-blue max-w-screen min-h-screen overflow-x-clip">
       <Image
         src="/landing-page/lines-white.svg"
         alt="Lines Background"

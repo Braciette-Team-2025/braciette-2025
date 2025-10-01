@@ -5,14 +5,22 @@
 }
 
 .container {
+  will-change: transform, opacity;
   padding: 10px 50px;
   position: relative;
   width: 50%;
   opacity: 0;
-  animation: movedown 1s linear forwards;
+
+  @supports (animation-timeline: view()) {
+    animation: movedown 1s linear forwards;
+    animation-timeline: view();
+    animation-range-start: cover;
+    animation-range-end: 400px;
+  }
+  /* animation: movedown 1s linear forwards;
   animation-timeline: view();
   animation-range-start: cover;
-  animation-range-end: 400px;
+  animation-range-end: 400px; */
 }
 
 @keyframes movedown {
@@ -67,6 +75,7 @@
 }
 
 .timeline::after {
+  will-change: height;
   content: "";
   position: absolute;
   width: 6px;
@@ -76,10 +85,17 @@
   left: 50%;
   margin-left: -3px;
   z-index: -1;
-  animation: moveline 6s linear forwards;
+
+  @supports (animation-timeline: view()) {
+    animation: moveline 5s linear forwards;
+    animation-timeline: view();
+    animation-range-start: cover;
+    animation-range-end: 1200px;
+  }
+  /* animation: moveline 5s linear forwards;
   animation-timeline: view();
   animation-range-start: cover;
-  animation-range-end: 1200px;
+  animation-range-end: 1200px; */
 }
 
 @keyframes moveline {
