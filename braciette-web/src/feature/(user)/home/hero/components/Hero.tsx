@@ -5,7 +5,7 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="relative bg-yellow w-full pt-0 min-h-screen z-40 flex flex-col justify-between"
+      className="relative bg-yellow w-full pt-0 min-h-screen z-40 flex flex-col justify-between overflow-x-clip"
     >
       <Image
         src="/landing-page/lines.svg"

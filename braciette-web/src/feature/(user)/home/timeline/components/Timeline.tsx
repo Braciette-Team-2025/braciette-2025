@@ -5,7 +5,7 @@ import { TimelineData } from "../data/timeline_data";
 
 function Timeline() {
   return (
-    <section className="relative flex flex-col justify-center items-center bg-blue">
+    <section className="relative flex flex-col justify-center items-center bg-blue overflow-x-clip">
       <div className="w-full h-full z-40 bg-blue flex flex-col justify-center items-center px-8 md:px-20 2xl:px-30 py-[20dvh]">
         <div className="relative flex flex-row justify-center items-center gap-24">
           <div className="hidden md:block absolute -left-40 top-0">

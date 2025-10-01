@@ -18,15 +18,15 @@ export const TimelineData: Timeline[] = [
     {
       id: 3,
       title: "Voting",
-      date: "30 September - 25 Oktober 2025",
-      desc: "Periode voting dimulai dari tanggal 30 September hingga 25 Oktober 2025.",
+      date: "1 Oktober - 27 Oktober 2025",
+      desc: "Periode voting dimulai dari tanggal 1 Oktober hingga 27 Oktober 2025.",
       position: "left",
     },
     {
       id: 4,
       title: "Awarding Brawijaya Appreciate 2025",
       date: "30 Oktober 2025",
-      desc: "Puncak acara Awarding Brawijaya Appreciate 2025 yang akan diadakan secara luring. Tempat: To be announced.",
+      desc: "Puncak acara Awarding Brawijaya Appreciate 2025 yang akan diadakan secara luring di Gedung Samantha Krida Universitas Brawijaya.",
       position: "right",
     },
 ]

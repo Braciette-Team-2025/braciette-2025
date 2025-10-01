@@ -4,7 +4,7 @@ import style from "../styles/Box.module.css";
 function Sponsorship() {
   const amount: number = 14;
   return (
-    <section className="pb-[20dvh] p-10 lg:pl-10 lg:pr-0 lg:pt-0 flex flex-col gap-8 justify-center items-center">
+    <section className="pb-[20dvh] max-w-screen p-10 lg:pl-10 lg:pr-0 lg:pt-0 flex flex-col gap-8 justify-center items-center overflow-hidden">
       <h1
         className="font-yourmate text-[120px] text-green z-50 relative text-center"
         style={{ fontSize: "clamp(40px, 5vw, 120px)" }}
