@@ -1,3 +1,5 @@
+import { NominationApiData } from "@/api/services/user/nomination";
+
 export type Organization = {
   id: string;
   name: string;
@@ -12,5 +14,5 @@ export type LeaderboardData = {
 export type Category = {
   id: string;
   name: string;
-  leaderboard: LeaderboardData[];
+  leaderboard: NominationApiData[];
 };
