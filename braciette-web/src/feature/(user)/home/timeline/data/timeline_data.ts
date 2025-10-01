@@ -24,9 +24,16 @@ export const TimelineData: Timeline[] = [
     },
     {
       id: 4,
+      title: "Pengumpulan Berkas Nominasi",
+      date: "1 Oktober - 16 Oktober 2025",
+      desc: "Periode pengumpulan berkas nominasi dari tanggal 1 Oktober hingga 16 Oktober 2025.",
+      position: "right",
+    },
+    {
+      id: 5,
       title: "Awarding Brawijaya Appreciate 2025",
       date: "30 Oktober 2025",
       desc: "Puncak acara Awarding Brawijaya Appreciate 2025 yang akan diadakan secara luring di Gedung Samantha Krida Universitas Brawijaya.",
-      position: "right",
+      position: "left",
     },
 ]
