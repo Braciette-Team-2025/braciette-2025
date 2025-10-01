@@ -108,7 +108,9 @@ function Timeline() {
           {TimelineData.map((timeline, index) => (
             <div
               key={timeline.id}
-              ref={(el) => (containerRefs.current[index] = el)}
+              ref={(el) => {
+                containerRefs.current[index] = el;
+              }}
               className={`${style.container} ${
                 style[`${timeline.position}Container`]
               }`}
