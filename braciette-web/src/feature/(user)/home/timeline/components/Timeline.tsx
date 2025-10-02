@@ -1,72 +1,20 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import style from "../styles/Timeline.module.css";
 import animate from "@/shared/styles/Animation.module.css";
 import { TimelineData } from "../data/timeline_data";
-
-gsap.registerPlugin(ScrollTrigger);
+import { motion, useScroll, useTransform } from "framer-motion";
 
 function Timeline() {
-  const timelineRef = useRef<HTMLDivElement>(null);
-  const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const lineRef = useRef<HTMLDivElement>(null);
+  const ref = useRef(null);
+  const { scrollYProgress: lineScrollProgressY } = useScroll({
+    target: ref,
+    offset: ["start 0.5", "end 0.2"],
+  });
 
-  useEffect(() => {
-    if (!timelineRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Animate the timeline vertical line
-      if (lineRef.current) {
-        gsap.fromTo(
-          lineRef.current,
-          { height: 0 },
-          {
-            height: "100%",
-            duration: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: timelineRef.current,
-              start: "top center",
-              end: "bottom center",
-              scrub: 1,
-            },
-          }
-        );
-      }
-
-      // Animate each timeline container
-      containerRefs.current.forEach((container, index) => {
-        if (container) {
-          gsap.fromTo(
-            container,
-            {
-              opacity: 0,
-              y: -30,
-            },
-            {
-              opacity: 1,
-              y: 0,
-              duration: 0.8,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: container,
-                start: "top 80%",
-                end: "top 50%",
-                toggleActions: "play none none reverse",
-                scrub: 1,
-              },
-            }
-          );
-        }
-      });
-    }, timelineRef);
-
-    return () => ctx.revert();
-  }, []);
+  const heightY = useTransform(lineScrollProgressY, [0, 1], ["0%", "100%"]);
 
   return (
     <section className="relative flex flex-col justify-center items-center bg-blue">
@@ -103,33 +51,58 @@ function Timeline() {
             </h2>
           </div>
         </div>
-        <div ref={timelineRef} className={`${style.timeline}`}>
-          <div ref={lineRef} className={style.timelineLine} />
-          {TimelineData.map((timeline, index) => (
-            <div
-              key={timeline.id}
-              ref={(el) => {
-                containerRefs.current[index] = el;
-              }}
-              className={`${style.container} ${
-                style[`${timeline.position}Container`]
-              }`}
-            >
-              <div
-                className={`w-[50px] h-[50px] rounded-full bg-yellow ${style.balls}`}
-              />
-              <div className={`${style.textBox}`}>
-                <h2 className="font-retro text-4xl text-blue">
-                  {timeline.title}
-                </h2>
-                <small className="font-poppins">{timeline.date}</small>
-                <p className="font-poppins mt-4">{timeline.desc}</p>
-                <span
-                  className={`${style[`${timeline.position}Arrow`]}`}
-                ></span>
-              </div>
-            </div>
-          ))}
+        <div ref={ref} className={`${style.timeline}`}>
+          <motion.div
+            className="w-3 bg-yellow absolute left-1 md:left-[49.5%] rounded-full"
+            style={{ height: heightY }}
+          />
+          <div className={style.timelineLine} />
+          {TimelineData.map((timeline) => {
+            const cardRef = useRef(null);
+            const { scrollYProgress: boxTranslateScrollProgressY } = useScroll({
+              target: cardRef,
+              offset: ["start 0.5", "end 0.6"],
+            });
+            const { scrollYProgress: boxOpacityScrollProgressY } = useScroll({
+              target: cardRef,
+              offset: ["start 0.5", "end 0.6"],
+            });
+            const opacityY = useTransform(
+              boxOpacityScrollProgressY,
+              [0, 1],
+              ["0%", "100%"]
+            );
+            const translateY = useTransform(
+              boxTranslateScrollProgressY,
+              [0, 1],
+              [-100, 0]
+            );
+
+            return (
+              <motion.div
+                ref={cardRef}
+                key={timeline.id}
+                style={{ opacity: opacityY, y: translateY }}
+                className={`${style.container} ${
+                  style[`${timeline.position}Container`]
+                }`}
+              >
+                <div
+                  className={`w-[50px] h-[50px] rounded-full bg-yellow ${style.balls}`}
+                />
+                <div className={`${style.textBox}`}>
+                  <h2 className="font-retro text-4xl text-blue">
+                    {timeline.title}
+                  </h2>
+                  <small className="font-poppins">{timeline.date}</small>
+                  <p className="font-poppins mt-4">{timeline.desc}</p>
+                  <span
+                    className={`${style[`${timeline.position}Arrow`]}`}
+                  ></span>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
       <div
