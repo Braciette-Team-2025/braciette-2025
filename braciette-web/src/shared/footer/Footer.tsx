@@ -47,7 +47,7 @@ export const Footer = () => {
             </div>
             <div className="md:hidden w-[14dvw] md:w-[10dvw]">
               <Image
-                src="/logobraciette.svg"
+                src="/landing-page/braciate-logo.png"
                 alt="Brawijaya Appreciate Logo"
                 width={230}
                 height={230}
