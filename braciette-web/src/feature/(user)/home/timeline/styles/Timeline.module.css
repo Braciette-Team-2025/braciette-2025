@@ -9,7 +9,7 @@
   padding: 10px 50px;
   position: relative;
   width: 50%;
-  opacity: 0;
+  opacity: 1;
   /* animation: movedown 1s linear forwards; */
 
   /* @supports (animation-timeline: view()) {
@@ -88,12 +88,12 @@
   animation: moveline 5s linear forwards;
 } */
 
-  /* @supports (animation-timeline: view()) {
+/* @supports (animation-timeline: view()) {
     animation-timeline: view();
     animation-range-start: cover;
     animation-range-end: 1200px;
   } */
-  /* animation: moveline 5s linear forwards;
+/* animation: moveline 5s linear forwards;
   animation-timeline: view();
   animation-range-start: cover;
   animation-range-end: 1200px; */
