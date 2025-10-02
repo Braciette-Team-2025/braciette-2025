@@ -6,17 +6,17 @@ import { FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
 const socialMediaLinks = [
   {
     name: "Instagram",
-    href: "https://www.instagram.com",
+    href: "https://www.instagram.com/braciate2025?igsh=MTF2d2VwODhqOGo3OA==",
     icon: <FaInstagram className="text-[#F3DE2C] w-full h-auto" />,
   },
   {
     name: "TikTok",
-    href: "https://www.tiktok.com",
+    href: "https://www.tiktok.com/@braciate2025?_t=ZS-90BHbD7moXn&_r=1",
     icon: <FaTiktok className="text-[#F3DE2C] w-full h-auto" />,
   },
   {
     name: "WhatsApp",
-    href: "https://www.whatsapp.com",
+    href: "http://wa.me/6287825340935",
     icon: <FaWhatsapp className="text-[#F3DE2C] w-full h-auto" />,
   },
 ];
@@ -47,7 +47,7 @@ export const Footer = () => {
             </div>
             <div className="md:hidden w-[14dvw] md:w-[10dvw]">
               <Image
-                src="/logobraciette.svg"
+                src="/landing-page/braciate-logo.png"
                 alt="Brawijaya Appreciate Logo"
                 width={230}
                 height={230}

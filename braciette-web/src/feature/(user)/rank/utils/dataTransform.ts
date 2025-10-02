@@ -8,11 +8,8 @@ export function transformNominationToLeaderboard(
     return [];
   }
 
-  // Stable sort by name for consistent ranking across page reloads
-  // You can change this to random if you prefer: .sort(() => Math.random() - 0.5)
-  const sortedNominations = [...nominations].sort((a, b) => a.name.localeCompare(b.name));
-
-  return sortedNominations.map((nomination, index) => ({
+  // Use nominations in the order received from API (already sorted by backend)
+  return nominations.map((nomination, index) => ({
     rank: index + 1,
     organization: {
       id: nomination.id,
@@ -28,8 +25,8 @@ export function createCategory(
 ): Category {
   return {
     id: categoryData.id,
-    name: `${categoryData.longName} Terfavorit`,
-    leaderboard: transformNominationToLeaderboard(nominations)
+    name: `${categoryData.name} Terfavorit`,
+    leaderboard: nominations
   };
 }
 

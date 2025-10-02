@@ -5,17 +5,25 @@
 }
 
 .container {
+  will-change: transform, opacity;
   padding: 10px 50px;
   position: relative;
   width: 50%;
   opacity: 0;
-  animation: movedown 1s linear forwards;
+  /* animation: movedown 1s linear forwards; */
+
+  /* @supports (animation-timeline: view()) {
+    animation-timeline: view();
+    animation-range-start: cover;
+    animation-range-end: 400px;
+  } */
+  /* animation: movedown 1s linear forwards;
   animation-timeline: view();
   animation-range-start: cover;
-  animation-range-end: 400px;
+  animation-range-end: 400px; */
 }
 
-@keyframes movedown {
+/* @keyframes movedown {
   0% {
     opacity: 0;
     transform: translateY(-30px);
@@ -24,9 +32,9 @@
     opacity: 1;
     transform: translateY(0px);
   }
-}
+} */
 
-.container:nth-child(1) {
+/* .container:nth-child(1) {
   animation-delay: 0s;
 }
 .container:nth-child(2) {
@@ -37,7 +45,7 @@
 }
 .container:nth-child(4) {
   animation-delay: 3s;
-}
+} */
 
 .textBox {
   padding: 20px 30px;
@@ -66,7 +74,8 @@
   left: -25px;
 }
 
-.timeline::after {
+/* .timeline::after {
+  will-change: height;
   content: "";
   position: absolute;
   width: 6px;
@@ -76,19 +85,38 @@
   left: 50%;
   margin-left: -3px;
   z-index: -1;
-  animation: moveline 6s linear forwards;
+  animation: moveline 5s linear forwards;
+} */
+
+  /* @supports (animation-timeline: view()) {
+    animation-timeline: view();
+    animation-range-start: cover;
+    animation-range-end: 1200px;
+  } */
+  /* animation: moveline 5s linear forwards;
   animation-timeline: view();
   animation-range-start: cover;
-  animation-range-end: 1200px;
-}
+  animation-range-end: 1200px; */
 
-@keyframes moveline {
+/* @keyframes moveline {
   0% {
     height: 0;
   }
   100% {
     height: 100%;
   }
+} */
+
+.timelineLine {
+  will-change: height;
+  position: absolute;
+  width: 6px;
+  height: 0;
+  background: var(--yellow);
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: -1;
 }
 
 .leftArrow {
@@ -129,7 +157,10 @@
   .timeline {
     margin: 50px auto;
   }
-  .timeline::after {
+  /* .timeline::after {
+    left: 11px;
+  } */
+  .timelineLine {
     left: 11px;
   }
   .container {
@@ -153,7 +184,7 @@
     border-left: 0px;
     left: -15px;
   }
-  .timeline::after {
+  /* .timeline::after {
     animation-range-end: 1800px;
-  }
+  } */
 }

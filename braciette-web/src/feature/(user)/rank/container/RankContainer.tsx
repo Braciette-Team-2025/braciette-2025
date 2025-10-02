@@ -33,14 +33,15 @@ export function RankContainer({
 }: {
   initialCategory?: string;
 }) {
-  const { categories, categoryMapping, loading, error, refetch } = useRankings();
+  const { categories, categoryMapping, loading, error, refetch } =
+    useRankings();
 
   const findInitialIndex = (categorySlug?: string) => {
     if (!categorySlug || categories.length === 0) return 0;
-    
+
     const categoryData = findCategoryBySlug(categoryMapping, categorySlug);
     if (!categoryData) return 0;
-    
+
     const index = categories.findIndex((cat) => cat.id === categoryData.id);
     return index !== -1 ? index : 0;
   };
@@ -95,7 +96,7 @@ export function RankContainer({
         <div className="relative z-20 flex flex-col items-center text-center">
           <p className="text-white text-xl mb-4">Error loading rankings</p>
           <p className="text-gray-300 mb-6">{error}</p>
-          <button 
+          <button
             onClick={refetch}
             className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
@@ -124,8 +125,24 @@ export function RankContainer({
   }
 
   const currentCategory = categories[categoryIndex];
-  const topThree = currentCategory.leaderboard.filter((item) => item.rank <= 3);
-  const others = currentCategory.leaderboard.filter((item) => item.rank > 3);
+  // Get first 3 nominations for top three display (rank 1, 2, 3)
+  const topThree = currentCategory.leaderboard.slice(0, 3).map((item, index) => ({
+    rank: index + 1,
+    organization: {
+      id: item.id,
+      name: item.name,
+      logoUrl: item.logoUrl,
+    }
+  }));
+  // Get remaining nominations starting from rank 4
+  const others = currentCategory.leaderboard.slice(3).map((item, index) => ({
+    rank: index + 4,
+    organization: {
+      id: item.id,
+      name: item.name,
+      logoUrl: item.logoUrl,
+    }
+  }));
 
   const leafVariants: Variants = {
     hidden: { scale: 0, rotate: -90 },
