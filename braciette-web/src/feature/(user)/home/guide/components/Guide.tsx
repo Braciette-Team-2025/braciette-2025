@@ -93,7 +93,7 @@ function Guide() {
         </div>
         <div className="block md:hidden relative w-[25dvw] h-[10dvh]">
           <Image
-            src="/landing-page/logo-alternate.svg"
+            src="/landing-page/braciate-logo.png"
             alt="Guide"
             fill={true}
             objectFit="contain"
