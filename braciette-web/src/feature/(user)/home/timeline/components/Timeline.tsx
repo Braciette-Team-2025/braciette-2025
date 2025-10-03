@@ -1,20 +1,34 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import style from "../styles/Timeline.module.css";
 import animate from "@/shared/styles/Animation.module.css";
 import { TimelineData } from "../data/timeline_data";
-import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 function Timeline() {
   const ref = useRef(null);
+  const [isLineFull, setIsLineFull] = useState(false);
   const { scrollYProgress: lineScrollProgressY } = useScroll({
     target: ref,
     offset: ["start 0.5", "end 0.2"],
   });
 
-  const heightY = useTransform(lineScrollProgressY, [0, 1], ["0%", "100%"]);
+  const heightY = useTransform(lineScrollProgressY, [0, 1], ["0%", "100%"], {
+    clamp: true,
+  });
+
+  useMotionValueEvent(lineScrollProgressY, "change", (latest) => {
+    if (latest >= 1 && !isLineFull) {
+      setIsLineFull(true);
+    }
+  });
 
   return (
     <section className="relative flex flex-col justify-center items-center bg-blue">
@@ -54,10 +68,12 @@ function Timeline() {
         <div ref={ref} className={`${style.timeline}`}>
           <motion.div
             className="w-3 bg-yellow absolute left-1 md:left-[49.5%] rounded-full"
-            style={{ height: heightY }}
+            style={{ height: isLineFull ? "100%" : heightY }}
           />
           <div className={style.timelineLine} />
           {TimelineData.map((timeline) => {
+            const [isOpacityFull, setIsOpacityFull] = useState(false);
+            const [isTranslateDone, setIsTranslateDone] = useState(false);
             const cardRef = useRef(null);
             const { scrollYProgress: boxTranslateScrollProgressY } = useScroll({
               target: cardRef,
@@ -67,22 +83,48 @@ function Timeline() {
               target: cardRef,
               offset: ["start 0.5", "end 0.6"],
             });
+
+            useMotionValueEvent(
+              boxOpacityScrollProgressY,
+              "change",
+              (latest) => {
+                if (latest >= 1 && !isOpacityFull) {
+                  setIsOpacityFull(true);
+                }
+              }
+            );
+
+            useMotionValueEvent(
+              boxTranslateScrollProgressY,
+              "change",
+              (latest) => {
+                if (latest >= 1 && !isTranslateDone) {
+                  setIsTranslateDone(true);
+                }
+              }
+            );
+
             const opacityY = useTransform(
               boxOpacityScrollProgressY,
               [0, 1],
-              ["0%", "100%"]
+              ["0%", "100%"],
+              { clamp: true }
             );
             const translateY = useTransform(
               boxTranslateScrollProgressY,
               [0, 1],
-              [-100, 0]
+              [-100, 0],
+              { clamp: true }
             );
 
             return (
               <motion.div
                 ref={cardRef}
                 key={timeline.id}
-                style={{ opacity: opacityY, y: translateY }}
+                style={{
+                  opacity: isOpacityFull ? 1 : opacityY,
+                  y: isTranslateDone ? 0 : translateY,
+                }}
                 className={`${style.container} ${
                   style[`${timeline.position}Container`]
                 }`}
