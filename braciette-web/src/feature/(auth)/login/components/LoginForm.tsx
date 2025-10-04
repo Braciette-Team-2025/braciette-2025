@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/shared/context/AuthContext";
 import { useToast } from "@/shared/hooks/useToast";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,15 +77,24 @@ const LoginForm = () => {
           <Label htmlFor="password" className="text-black font-bold text-base">
             Password
           </Label>
-          <Input
-            id="password"
-            type="password"
-            placeholder="Masukkan password..."
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className="bg-white rounded-[12px] h-12 text-base focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-          />
+          <div className="relative">
+            <Input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              placeholder="Masukkan password..."
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="bg-white rounded-[12px] h-12 text-base pr-10 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 hover:text-gray-800"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </button>
+          </div>
         </div>
       </div>
 

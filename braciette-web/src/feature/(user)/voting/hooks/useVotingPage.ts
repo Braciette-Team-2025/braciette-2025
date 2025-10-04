@@ -13,7 +13,7 @@ export const useVotingPage = (categorySlug: string) => {
   const [selectedCandidate, setSelectedCandidate] = useState<Candidate | null>(
     null
   );
-  const [isLoadingVote, setIsLoadingVote] = useState(false);
+  // const [isLoadingVote, setIsLoadingVote] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [hasVoted, setHasVoted] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -56,11 +56,11 @@ export const useVotingPage = (categorySlug: string) => {
       votingService.submitVote(payload),
     onSuccess: () => {
 
-      showToast({
-        type: "success",
-        title: "Vote Berhasil!",
-        message: "Terima kasih atas partisipasi Anda.",
-      });
+      // showToast({
+      //   type: "success",
+      //   title: "Vote Berhasil!",
+      //   message: "Terima kasih atas partisipasi Anda.",
+      // });
       setIsSuccess(true);
       setHasVoted(true);
     },

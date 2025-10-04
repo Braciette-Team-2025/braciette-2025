@@ -5,6 +5,8 @@ import { useState } from "react";
 import { useAuth } from "@/shared/context/AuthContext";
 import { rankDropdownLinks } from "@/shared/data/dataNav";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useToast } from "@/shared/hooks/useToast";
 
 const NavHoverEffect = () => (
   <span className="absolute left-1/2 -translate-x-1/2 top-full flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -18,6 +20,18 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRankDropdownOpen, setIsRankDropdownOpen] = useState(false);
   const { isAuthenticated, logout, isLoading } = useAuth();
+  const { showToast } = useToast();
+
+  const handleLogout = () => {
+    showToast({
+      type: "info",
+      title: "Logout Berhasil",
+      message: "Anda telah berhasil keluar.",
+    });
+    setTimeout(() => {
+      logout();
+    }, 1500);
+  };
 
   const navItems = [
     { href: "/", label: "Home" },
@@ -75,6 +89,7 @@ function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  onClick={() => setIsRankDropdownOpen(false)}
                   className="p-2 hover:bg-yellow hover:text-pink transition-all duration-150 rounded-md whitespace-nowrap"
                 >
                   {link.label}
@@ -87,7 +102,7 @@ function Navbar() {
             <div className="w-20 h-8 bg-yellow/20 rounded-md animate-pulse" />
           ) : isAuthenticated ? (
             <div className="relative group">
-              <button onClick={logout} className="cursor-pointer">
+              <button onClick={handleLogout} className="cursor-pointer">
                 Logout
               </button>
               <NavHoverEffect />
@@ -110,84 +125,93 @@ function Navbar() {
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div
-          className="md:hidden bg-pink font-poppins text-yellow text-center h-screen flex flex-col justify-center items-center"
-          style={{ boxShadow: "0 18px 20px rgba(0, 0, 0, 0.25)" }}
-        >
-          <ul className="flex flex-col items-center justify-center gap-12 py-8 -translate-y-[60px]">
-            {navItems.map((item) => (
-              <li key={item.href} className="text-4xl font-medium">
-                <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="md:hidden bg-pink font-poppins text-yellow text-center h-screen flex flex-col justify-center items-center absolute top-full left-0 w-full"
+            style={{ boxShadow: "0 18px 20px rgba(0, 0, 0, 0.25)" }}
+          >
+            <ul className="flex flex-col items-center justify-center gap-12 py-8 -translate-y-[60px]">
+              {navItems.map((item) => (
+                <li key={item.href} className="text-4xl font-medium">
+                  <Link href={item.href} onClick={() => setIsMenuOpen(false)}>
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
 
-            {isAuthenticated && (
+              {isAuthenticated && (
+                <li className="text-4xl font-medium">
+                  <Link href="/choose" onClick={() => setIsMenuOpen(false)}>
+                    Vote
+                  </Link>
+                </li>
+              )}
+
               <li className="text-4xl font-medium">
-                <Link href="/choose" onClick={() => setIsMenuOpen(false)}>
-                  Vote
-                </Link>
-              </li>
-            )}
-
-            <li className="text-4xl font-medium">
-              <button
-                onClick={() => setIsRankDropdownOpen(!isRankDropdownOpen)}
-              >
-                Rank
-              </button>
-              {isRankDropdownOpen && (
-                <div className="flex justify-center items-center gap-4 text-2xl mt-8">
-                  <div className="flex flex-col gap-4 w-35">
-                    {rankDropdownLinks.slice(0, 2).map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-col gap-4 w-35">
-                    {rankDropdownLinks.slice(2, 4).map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </li>
-
-            <li className="text-4xl font-medium">
-              {isLoading ? (
-                <div className="w-32 h-10 bg-yellow/20 rounded-md animate-pulse" />
-              ) : isAuthenticated ? (
                 <button
-                  onClick={() => {
-                    logout();
-                    setIsMenuOpen(false);
-                  }}
+                  onClick={() => setIsRankDropdownOpen(!isRankDropdownOpen)}
                 >
-                  Logout
+                  Rank
                 </button>
-              ) : (
-                <Link href="/login" onClick={() => setIsMenuOpen(false)}>
-                  Login
-                </Link>
-              )}
-            </li>
-          </ul>
-        </div>
-      )}
+                {isRankDropdownOpen && (
+                  <div className="flex justify-center items-center gap-4 text-2xl mt-8">
+                    <div className="flex flex-col gap-4 w-35">
+                      {rankDropdownLinks.slice(0, 2).map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => {
+                            setIsRankDropdownOpen(false);
+                            setIsMenuOpen(false);
+                          }}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+
+                    <div className="flex flex-col gap-4 w-35">
+                      {rankDropdownLinks.slice(2, 4).map((link) => (
+                        <Link
+                          key={link.href}
+                          href={link.href}
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {link.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </li>
+
+              <li className="text-4xl font-medium">
+                {isLoading ? (
+                  <div className="w-32 h-10 bg-yellow/20 rounded-md animate-pulse" />
+                ) : isAuthenticated ? (
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setIsMenuOpen(false);
+                    }}
+                  >
+                    Logout
+                  </button>
+                ) : (
+                  <Link href="/login" onClick={() => setIsMenuOpen(false)}>
+                    Login
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
