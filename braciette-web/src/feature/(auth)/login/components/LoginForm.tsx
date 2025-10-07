@@ -53,6 +53,7 @@ const LoginForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
+      autoComplete="off"
       className="bg-[#f3d038] w-full p-8 rounded-2xl shadow-xl flex flex-col items-center gap-6"
     >
       <div className="w-full flex flex-col gap-5">

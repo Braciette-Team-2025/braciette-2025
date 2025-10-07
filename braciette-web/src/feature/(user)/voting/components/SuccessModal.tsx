@@ -12,8 +12,8 @@ export function SuccessModal({ isOpen }: SuccessModalProps) {
   useEffect(() => {
     if (isOpen) {
       const timer = setTimeout(() => {
-        window.location.reload();
-      }, 3000);
+        window.location.pathname = "/choose";
+      }, 2000);
 
       return () => clearTimeout(timer);
     }
