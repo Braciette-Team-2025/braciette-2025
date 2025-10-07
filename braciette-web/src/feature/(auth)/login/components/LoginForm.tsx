@@ -16,16 +16,31 @@ const LoginForm = () => {
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setError(null);
+
+    const cleanIdentifier = identifier.trim();
+    const cleanPassword = password.trim();
+
+    if (!cleanIdentifier || !cleanPassword) {
+      showToast({
+        type: "error",
+        title: "Input Tidak Valid",
+        message: "NIM/Email dan password tidak boleh kosong.",
+      });
+      setIsLoading(false);
+      return;
+    }
 
     try {
-      const loggedInUser = await login({ identifier, password });
+      const loggedInUser = await login({
+        identifier: cleanIdentifier,
+        password: cleanPassword,
+      });
+
       showToast({
         type: "success",
         title: "Login Berhasil!",
@@ -46,6 +61,7 @@ const LoginForm = () => {
         message: "Periksa kembali NIM / Email UB dan password Anda.",
       });
       console.error(err);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -104,8 +120,9 @@ const LoginForm = () => {
         size="sm"
         type="submit"
         className="mt-6 text-lg"
+        disabled={isLoading} // --- REVISI 4: Nonaktifkan tombol saat loading ---
       >
-        Sign In
+        {isLoading ? <Loader2 className="animate-spin" /> : "Sign In"}
       </Button>
     </form>
   );
