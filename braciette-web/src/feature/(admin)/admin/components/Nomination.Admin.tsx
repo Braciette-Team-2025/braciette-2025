@@ -74,7 +74,7 @@ function NominationAdmin({
               </div>
               <span
                 className="font-semibold"
-                style={{ fontSize: "clamp(20px, 1vw, 30px)" }}
+                style={{ fontSize: "clamp(14px, 1vw, 30px)" }}
               >
                 {nom.name}
               </span>

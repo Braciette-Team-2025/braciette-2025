@@ -28,15 +28,20 @@ function VoteAdmin({ data, voteInfo }: VoteAdminProps) {
                   objectFit="cover"
                 />
               </div>
-              <div className="flex-grow bg-gray-200 h-8 rounded-full">
-                <div
-                  className="h-full p-4 bg-blue rounded-lg transition-all duration-300"
-                  style={{ width: `${(item.value / maxValue) * 100}%` }}
-                ></div>
+              <div className="flex flex-col flex-grow">
+                <span className="font-semibold text-sm truncate max-w-72">{item.label}</span>
+                <div className="flex items-center w-full">
+                  <div className="flex-grow bg-gray-200 h-5 rounded-md">
+                    <div
+                      className="h-full bg-blue rounded-md transition-all duration-300"
+                      style={{ width: `${(item.value / maxValue) * 100}%` }}
+                    ></div>
+                  </div>
+                  <span className="font-semibold w-10 text-right">
+                    {item.value}
+                  </span>
+                </div>
               </div>
-              <span className="font-semibold w-10 text-right">
-                {item.value}
-              </span>
             </div>
           ))}
         </div>
