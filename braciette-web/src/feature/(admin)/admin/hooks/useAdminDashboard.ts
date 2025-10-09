@@ -29,12 +29,13 @@ export const useAdminDashboard = () => {
 
   const allStats = statsResponse?.data;
   const categories = allStats?.statistics || [];
-  const totalVotes = allStats?.totalUniqueVoters || 0;
 
   const selectedCategoryData = useMemo(() => {
     if (!selectedCategoryId) return null;
     return categories.find((cat) => cat.id === selectedCategoryId);
   }, [selectedCategoryId, categories]);
+  
+  const totalVotes = selectedCategoryData?.totalVotes || 0;
 
   const voteData =
     selectedCategoryData?.nominations.map((nom) => ({
