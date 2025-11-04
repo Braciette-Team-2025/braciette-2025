@@ -20,3 +20,9 @@ export type FAQ = {
     question: string;
     answer: string;
 }
+
+export type Sponsor = {
+    id: number;
+    image: string;
+    alt: string;
+}
